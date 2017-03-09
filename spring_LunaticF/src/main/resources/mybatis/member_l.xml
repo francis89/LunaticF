@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member_l">
+	<!-- delete -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM member_l
+		WHERE id = #{id}
+	</delete>
+
+
+
+	<!-- update -->
+	<update id="update" parameterType="Member_lDTO">
+		UPDATE member_l
+		SET tel = #{tel}, zipcode = #{zipcode},
+		address1 = #{address1}, address2 = #{address2}
+		WHERE id = #{id}
+	</update>
+
+
+	<!-- updatePw -->
+	<update id="updatePw" parameterType="Map">
+		UPDATE member_l
+		SET passwd = #{passwd}
+		WHERE id = #{id}
+	</update>
+
+	<!-- total -->
+	<select id="total" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM member_l
+		<where>
+			<choose>
+				<when test="col=='username'">
+					username like '%'||#{word}||'%'
+				</when>
+				<when test="col=='tel'">
+					tel like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					id like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+
+	<!-- list -->
+	<select id="list" resultType="Member_lDTO" parameterType="Map">
+		SELECT id, username, tel, zipcode, address1, address2, 
+       		   wdate, grade r 
+		FROM( 
+    		 SELECT id, username, tel, zipcode, address1, address2, 
+      				wdate, grade rownum r    
+      		 FROM(
+            	  SELECT id, username, tel, zipcode, address1, address2, 
+                  		 wdate, grade 
+            	  FROM member_l
+		<where>
+			<choose>
+				<when test="col=='username'">
+					username like '%'||#{word}||'%'
+				</when>
+				<when test="col=='tel'">
+					tel like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					id like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+		ORDER BY id ASC
+
+		)
+		)                                                                            
+	   <![CDATA[                                                                        
+	   where r>=#{sno} and r<=#{eno}  
+	   ]]>
+	</select>
+
+	<!-- read -->
+	<select id="read" resultType="Member_lDTO" parameterType="int">
+		SELECT id, username, tel, zipcode,  
+       			address1,address2, wdate, grade
+		FROM member_l
+		WHERE id=#{id}
+	</select>
+
+
+
+	<!-- duplicateId -->
+	<select id="duplicateId" resultType="int" parameterType="String">
+		SELECT
+		COUNT(id)
+		FROM member_l
+		WHERE id = #{id}
+	</select>
+
+	<!-- create -->
+	<insert id="create" parameterType="Member_lDTO">
+		INSERT INTO member(id, passwd, username, tel, zipcode,  
+							address1,address2, wdate, grade)
+		VALUES(#{id}, #{passwd}, #{username}, #{tel}, #{zipcode},
+		#{address1}, #{address2}, sysdate, 'H' )
+	</insert>
+
+
+	<!-- getGrade -->
+	<select id="getGrade" resultType="String" parameterType="String">
+		SELECT grade
+		FROM member_l
+		WHERE id = #{id}
+
+	</select>
+
+	<!-- loginCheck -->
+	<select id="loginCheck" resultType="int" parameterType="Map">
+		SELECT count(*)
+		FROM member_l
+		WHERE id = #{id} and passwd = #{passwd}
+	</select>
+
+</mapper>
