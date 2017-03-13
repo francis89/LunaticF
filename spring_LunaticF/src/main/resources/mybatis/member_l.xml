@@ -50,10 +50,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- list -->
 	<select id="list" resultType="Member_lDTO" parameterType="Map">
 		SELECT id, username, tel, zipcode, address1, address2, 
-       		   wdate, grade r 
+       		   wdate, grade, r 
 		FROM( 
     		 SELECT id, username, tel, zipcode, address1, address2, 
-      				wdate, grade rownum r    
+      				wdate, grade, rownum r    
       		 FROM(
             	  SELECT id, username, tel, zipcode, address1, address2, 
                   		 wdate, grade 
@@ -90,8 +90,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-	<!-- duplicateId -->
-	<select id="duplicateId" resultType="int" parameterType="String">
+	<!-- idCheck -->
+	<select id="idCheck" resultType="int" parameterType="String">
 		SELECT
 		COUNT(id)
 		FROM member_l
@@ -100,10 +100,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- create -->
 	<insert id="create" parameterType="Member_lDTO">
-		INSERT INTO member(id, passwd, username, tel, zipcode,  
-							address1,address2, wdate, grade)
+		INSERT INTO member_l(id, passwd, username, tel, zipcode,  
+							address1,address2, wdate)
 		VALUES(#{id}, #{passwd}, #{username}, #{tel}, #{zipcode},
-		#{address1}, #{address2}, sysdate, 'H' )
+		#{address1}, #{address2}, sysdate )
 	</insert>
 
 
@@ -120,6 +120,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT count(*)
 		FROM member_l
 		WHERE id = #{id} and passwd = #{passwd}
+	</select>
+	
+	<!-- passCheck -->
+	<select id="passCheck" parameterType="map" resultType="int">
+		SELECT COUNT(id) as cnt
+		FROM member_l
+		<where>
+			id = #{id} AND
+			passwd = #{passwd}
+		</where>
 	</select>
 
 </mapper>
