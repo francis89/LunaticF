@@ -31,7 +31,6 @@
 		<property name="definitions">
 			<list>
 				<value>/WEB-INF/spring/tilesHome.xml</value>
-				<value>/WEB-INF/spring/tilesMember.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -45,5 +44,9 @@
 			<value>org.springframework.web.servlet.view.tiles2.TilesView</value>
 		</property>
 	</bean>
+	<bean
+		id="Notice_lDAO"
+			class="spring.model.notice_l.Notice_lDAO"
+			p:sqlSession-ref="sqlSession"	/>
 
 </beans>
