@@ -83,7 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- read -->
 	<select id="read" resultType="Member_lDTO" parameterType="int">
 		SELECT id, username, tel, zipcode,  
-       			address1,address2, wdate, grade
+       			address1,address2, wdate
 		FROM member_l
 		WHERE id=#{id}
 	</select>

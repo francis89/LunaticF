@@ -10,7 +10,7 @@ public class Member_lDTO {
 	private String address1;	//user address1
 	private String address2;	//user address2
 	private String wdate;		//user create date
-	private char grade;			//user id grade
+	private String grade;			//user id grade
 	
 	public String getId() {
 		return id;
@@ -60,10 +60,10 @@ public class Member_lDTO {
 	public void setWdate(String wdate) {
 		this.wdate = wdate;
 	}
-	public char getGrade() {
+	public String getGrade() {
 		return grade;
 	}
-	public void setGrade(char grade) {
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
 	

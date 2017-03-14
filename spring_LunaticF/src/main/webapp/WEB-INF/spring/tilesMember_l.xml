@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+
+	<definition name="/member_l/list" extends="main">
+		<put-attribute name="title" value="member 목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/member_l/list.jsp" />
+	</definition>
+	<definition name="/member_l/create" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member ID생성"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member_l/createForm.jsp" />
+	</definition>
+
+	<definition name="/member_l/prcreateProc" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member 중복에러"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member_l/prcreateProc.jsp" />
+	</definition>
+	<definition name="/member_l/id_Form" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member ID중복확인 폼"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/member_l/id_Form.jsp" />
+	</definition>
+	<definition name="/member_l/id_Proc" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member ID중복확인"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/member_l/id_Proc.jsp" />
+	</definition>
+
+	<definition name="/member_l/login" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member 로그인"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member_l/loginForm.jsp" />
+	</definition>
+	<definition name="/member_l/logout" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member 로그아웃"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/member_l/logout.jsp" />
+	</definition>
+	<definition name="/member_l/idPwError" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member 로그인 실패"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/member_l/idPwError.jsp" />
+	</definition>
+	
+	<definition name="/member_l/read" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member 조회"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/member_l/read.jsp" />
+	</definition>
+	<definition name="/member_l/update" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member 정보수정"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member_l/updateForm.jsp" />
+	</definition>
+	 <definition name="/member_l/updatePw" extends="main"> 
+        <put-attribute name="title" value="Spring3.2 Example member 비밀번호수정" ></put-attribute> 
+        <put-attribute name="body" value="/WEB-INF/views/member_l/updatePwForm.jsp" /> 
+    </definition>
+	<definition name="/member_l/delete" extends="main">
+		<put-attribute name="title" value="Spring3.2 Example member 삭제"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/member_l/deleteForm.jsp" />
+	</definition>
+
+
+
+
+
+
+</tiles-definitions> 

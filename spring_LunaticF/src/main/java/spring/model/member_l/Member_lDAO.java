@@ -1,5 +1,6 @@
 package spring.model.member_l;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -107,6 +108,19 @@ public class Member_lDAO implements IMember_lDAO {
 	public String getGrade(String id) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("member_l.getGrade", id);
+	}
+	
+	public boolean updatePw(String id, String passwd) {
+		boolean flag = false;
+		Map map = new HashMap();
+		map.put("id", id);
+		map.put("passwd", passwd);
+
+		int cnt = sqlSession.update("member_l.updatePw", map);
+		if (cnt > 0)
+			flag = true;
+
+		return flag;
 	}
 
 }
