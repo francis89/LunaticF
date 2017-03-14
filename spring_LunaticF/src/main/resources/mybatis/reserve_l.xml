@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reserve_l">
+	<!-- <select id="checkPasswd" parameterType="Map" resultType="int">
+		SELECT COUNT(reserveno) as cnt
+		FROM reserve_l
+		WHERE reserveno=#{reserveno} AND passwd=#{passwd}
+	</select> -->
+	<update id="update" parameterType="Reserve_lDTO">
+		UPDATE reserve_l SET 
+		retitle=#{retitle}, recontent=#{recontent}, reterm=#{reterm}, retimnum=#{retimnum}
+		WHERE reserveno=#{reserveno}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM reserve_l
+		WHERE reserveno = #{reserveno}
+	</delete>
+	<select id="readReply" parameterType="int" resultType="Reserve_lDTO">
+		SELECT reserveno,retitle,grpno,indent,ansnum
+		FROM reserve_l
+		WHERE reserveno = #{reserveno}
+	</select>
+	<insert id="reply" parameterType="int">
+		INSERT INTO reserve_l(reserveno, retitle, recontent, reterm, restate, retimnum, redate, id, grpno, indent, ansnum, refno)
+		VALUES((SELECT NVL(MAX(reserveno), 0) + 1 as reserveno FROM reserve_l), #{retitle}, #{recontent}, #{reterm}, #{restate}, #{retimnum}, sysdate,
+		#{id}, #{grpno}, #{indent} + 1, #{ansnum} + 1, #{reserveno})
+	</insert>
+	<update id="addAnsnum" parameterType="Map">
+		UPDATE reserve_l
+		SET ansnum = ansnum + 1
+		<![CDATA[
+		WHERE grpno=#{grpno} AND ansnum > #{ansnum}
+		]]>
+	</update>
+	<insert id="create" parameterType="Reserve_lDTO">
+		INSERT INTO reserve_l(reserveno, retitle, recontent, reterm, restate, retimnum, redate, grpno, id)
+		VALUES((SELECT NVL(MAX(reserveno), 0) + 1 as reserveno FROM reserve_l),
+		#{retitle}, #{recontent}, #{reterm}, #{restate}, #{retimnum},sysdate, (SELECT NVL(MAX(grpno), 0) + 1 as grpno FROM reserve_l), #{id})
+	</insert>
+	<select id="checkRefno" parameterType="int" resultType="int">
+		SELECT count(refno) FROM reserve_l
+		WHERE refno = #{reserveno}
+	</select>
+	<update id="upViewcnt" parameterType="int">
+		update reserve_l
+		set reviewcnt =
+		reviewcnt + 1
+		where reserveno = #{reserveno}
+	</update>
+	<select id="total" resultType="int" parameterType="Map">
+		select count(*) from reserve_l
+		<where>
+			<choose>
+				<when test="col=='restate'">
+					restate like '%'||#{word}||'%'
+				</when>
+				<when test="col=='retitle'">
+					retitle like '%'||#{word}||'%'
+				</when>
+				<when test="col=='id'">
+					id like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+	<select id="list" resultType="Reserve_lDTO" parameterType="Map">
+	SELECT reserveno, retitle, restate, redate, reviewcnt, indent, id, r
+		FROM(
+			SELECT reserveno, retitle, restate, redate, reviewcnt, indent, id, rownum r
+			FROM(
+				SELECT reserveno, retitle, restate, redate, reviewcnt, indent, id
+				FROM reserve_l
+			<where>
+				<choose>
+					<when test="col=='restate'">
+						restate like '%'||#{word}||'%'
+					</when>
+					<when test="col=='retitle'">
+						retitle like '%'||#{word}||'%'
+					</when>
+					<when test="col=='id'">
+						id like '%'||#{word}||'%'
+					</when>
+				</choose>
+			</where>
+			ORDER BY grpno DESC, ansnum ASC
+				)
+			)                                                                            
+   <![CDATA[                                                                        
+   where r>=#{sno} and r<=#{eno}  
+   ]]>
+	</select>
+	<select id="read" resultType="Reserve_lDTO" parameterType="int">
+		SELECT reserveno, retitle, recontent, reterm, restate, retimnum, TO_CHAR(redate, 'yyyy-mm-dd hh:mm:ss'), reviewcnt, id
+		FROM reserve_l
+		WHERE reserveno = #{reserveno}
+	</select>
+</mapper>

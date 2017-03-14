@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="/reserve_l/list" extends="main">
+		<put-attribute name="title" value="게시판목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/reserve_l/list.jsp" />
+	</definition>
+	<definition name="/reserve_l/read" extends="main">
+		<put-attribute name="title" value="게시판조회"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/reserve_l/read.jsp" />
+	</definition>
+	<definition name="/reserve_l/create" extends="main">
+		<put-attribute name="title" value="게시판작성"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/reserve_l/createForm.jsp" />
+	</definition>
+	<definition name="/reserve_l/update" extends="main">
+		<put-attribute name="title" value="게시판 글수정"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/reserve_l/updateForm.jsp" />
+	</definition>
+	<definition name="/reserve_l/delete" extends="main">
+		<put-attribute name="title" value="게시판 글삭제"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/reserve_l/deleteForm.jsp" />
+	</definition>
+	<definition name="/reserve_l/reply" extends="main">
+		<put-attribute name="title" value="글답변"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/reserve_l/replyForm.jsp" />
+	</definition>
+</tiles-definitions>
