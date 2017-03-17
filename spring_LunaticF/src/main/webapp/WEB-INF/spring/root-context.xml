@@ -21,19 +21,19 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
  
-<!--     <tx:advice id="txAdvice" transaction-manager="transactionManager"> -->
-<!--        <tx:attributes> -->
-<!--           <tx:method name="delete" rollback-for="Exception"/> -->
-<!--        </tx:attributes> -->
-<!--     </tx:advice> -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+       <tx:attributes>
+          <tx:method name="delete" rollback-for="Exception"/>
+       </tx:attributes>
+    </tx:advice>
  
-<!--     <aop:config> -->
-<!--         <aop:pointcut id="transactionPointcut" expression="execution(* spring.model.bbs.*Service.*(..))"/> -->
-<!--         <aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut" /> -->
-<!--     </aop:config> -->
+    <aop:config>
+        <aop:pointcut id="transactionPointcut" expression="execution(* spring.model.*.*Service.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointcut" />
+    </aop:config>
  
    <context:component-scan base-package="spring.model.*" use-default-filters="false"> 
-      <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+      <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
       <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
    </context:component-scan> 
 
@@ -64,6 +64,7 @@
 			<list>
 				<value>/WEB-INF/spring/tilesHome.xml</value>
 				<value>/WEB-INF/spring/tilesMember_l.xml</value>
+				<value>/WEB-INF/spring/tilesFinder_l.xml</value>
 			</list>
 		</property>
 	</bean>

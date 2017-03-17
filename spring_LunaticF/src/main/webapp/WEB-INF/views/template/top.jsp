@@ -73,7 +73,7 @@ body {
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#"> BOARD <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="${pageContext.request.contextPath }/bbs/list">BBS</a></li>
+								<li><a href="${pageContext.request.contextPath }/finder_l/list">Finder</a></li>
 								<li><a href="${pageContext.request.contextPath }/imgbbs/list">ImgBBS</a></li>
 								<li><a href="${pageContext.request.contextPath }/memo/list">MEMO</a></li>
 							</ul></li>

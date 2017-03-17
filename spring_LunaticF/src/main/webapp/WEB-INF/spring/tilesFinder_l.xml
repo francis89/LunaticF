@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+
+<tiles-definitions> 
+	  <definition name="/finder_l/list" extends="main">
+		<put-attribute name="title" value="공공시설 찾기 목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/finder_l/list.jsp" />
+	</definition>
+   
+</tiles-definitions> 
