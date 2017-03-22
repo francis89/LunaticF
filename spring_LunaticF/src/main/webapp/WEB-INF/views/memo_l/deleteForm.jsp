@@ -21,22 +21,34 @@ function mlist(){
     url += "&nowPage=${param.nowPage}";
 	location.href=url;
 }
+function incheck(f){
+	if(f.mpasswd.value==""){
+		alert("패스워드를 입력하세요");
+		f.mpasswd.focus();
+		return false;
+	}
+}
 </script>
 <link href="${pageContext.request.contextPath}/css/style.css" rel="Stylesheet" type="text/css">
 </head> 
 <body> 
 
 <div class="title">삭제 확인</div>
-<form name="frm" method='POST' action='./delete'>
+<form name="frm" method='POST' action='./delete' onsubmit="return incheck(this)">
 <input type="hidden" name='memono' size='30' value='${dto.memono}'> 
 <input type='hidden' name='col' size='30' value='${param.col}'>
 <input type='hidden' name='word' size='30' value='${param.word}'>
 <input type='hidden' name='nowPage' size='30' value='${param.nowPage}'>
 <div class="content">
 삭제를 하면 복구 될 수 없습니다.<br><br>
-삭제를 하시려면 삭제 처리 버튼을 클릭하세요.<br><br>
-취소는 '목록' 버튼을 누르세요.<br><br>
-<input type='submit' value='삭제 처리'>
+			<TABLE>
+    			<tr>
+				<th>비밀번호</th>
+				<td><input type="password" name='mpasswd' rows='10' cols='30'></td>
+				</tr>	
+  			</TABLE>
+  
+<input type='submit' value='삭제'>
 <input type='button' value='목록' onclick="mlist()">
 
 </div>

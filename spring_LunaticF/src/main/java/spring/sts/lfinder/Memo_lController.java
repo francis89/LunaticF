@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import spring.model.memo_l.Memo_lDAO;
-import spring.model.memo_l.Memo_lDTO;
+import spring.model.memo_l.*;
 import spring.utility.lfinder.Utility;
 
 
@@ -27,41 +26,58 @@ public class Memo_lController {
 	@Autowired
 	private Memo_lDAO dao;
 
+
+	@RequestMapping(value = "/memo_l/delete", method = RequestMethod.POST)
+	public String delete(int memono, String nowPage, String col, String word, Model model, String mpasswd) {
+		Map map = new HashMap();
+		map.put("memono", memono);
+		map.put("mpasswd", mpasswd);
+		
+		boolean pflag = dao.passCheck(map);
+		
+		if(pflag){
+			if (dao.delete(memono)) {
+				model.addAttribute("nowPage", nowPage);
+				model.addAttribute("col", col);
+				model.addAttribute("word", word);
+				return "redirect:./list";
+			} else {
+				return "error";
+			}
+		} else{
+			return "passwdError";
+		}
+		
+	}
 	@RequestMapping(value = "/memo_l/delete", method = RequestMethod.GET)
 	public String delete(int memono, Model model) {
 		model.addAttribute("dto", dao.read(memono));
 		return "/memo_l/delete";
 	}
 
-	@RequestMapping(value = "/memo_l/delete", method = RequestMethod.POST)
-	public String delete(int memono, String nowPage, String col,
-			String word, Model model) {
-
-		boolean flag = dao.delete(memono);
-		if (flag) {
-			model.addAttribute("nowPage", nowPage);
-			model.addAttribute("col", col);
-			model.addAttribute("word", word);
-			return "redirect:./list";
-		} else {
-
-			return "error";
-		}
-	}
-
 	@RequestMapping(value = "/memo_l/update", method = RequestMethod.POST)
 	public String update(Memo_lDTO dto,String col, String word,
-			String nowPage, Model model) {
-
+			String nowPage, Model model, int memono, String mpasswd) {
+		
+		Map map = new HashMap();
+		map.put("memono", memono);
+		map.put("mpasswd", mpasswd);
+		
+		boolean pflag = dao.passCheck(map);
 		boolean flag = dao.update(dto);
-		if (flag) {
-			model.addAttribute("nowPage", nowPage);
-			model.addAttribute("col", col);
-			model.addAttribute("word", word);
-			return "redirect:./list";
-		} else {
-			return "error";
+		if(pflag){
+			if (flag) {
+				model.addAttribute("nowPage", nowPage);
+				model.addAttribute("col", col);
+				model.addAttribute("word", word);
+				return "redirect:./list";
+			} else {
+				return "error";
+			}
+		} else{
+			return "passwdError";
 		}
+
 
 	}
 
@@ -78,7 +94,11 @@ public class Memo_lController {
 		Memo_lDTO dto = (Memo_lDTO) dao.read(memono);
 		String content = dto.getMcontent().replaceAll("\r\n", "<br>");
 		dto.setMcontent(content);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("col", col);
+		model.addAttribute("word", word);
 		model.addAttribute("dto", dto);
+		model.addAttribute("memono", memono);
 	
 
 		return "/memo_l/read";
@@ -134,7 +154,6 @@ public class Memo_lController {
 		request.setAttribute("col", col);
 		request.setAttribute("word", word);
 		request.setAttribute("paging", paging);
-		// rdao(ReplyDAO)의 값을 request 객체에 담는다.
 		
 
 		return "/memo_l/list";

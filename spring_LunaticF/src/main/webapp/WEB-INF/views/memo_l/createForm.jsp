@@ -41,13 +41,13 @@ onsubmit="return input(this)">
 <tr>
 	<th>제목</th>
 	<td>
-	<input type='text' name='mtitle' size='30' value=' '>
+	<input type='text' name='mtitle' size='30'>
 	</td>
 </tr>
 <tr>
 	<th>닉네임</th>
 	<td>
-	<input type='text' name='mnick' size='10' value=' '>
+	<input type='text' name='mnick' size='10'>
 	</td>
 </tr>
 
@@ -60,7 +60,7 @@ onsubmit="return input(this)">
 <tr>
 	<th>비밀번호</th>
 	<td>
-	<input type='text' name='mpasswd' size='10' value=' '>
+	<input type='text' name='mpasswd' size='10'>
 	</td>
 </tr>
 
