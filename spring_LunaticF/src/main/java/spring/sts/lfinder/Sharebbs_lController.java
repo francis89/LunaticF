@@ -81,9 +81,13 @@ public class Sharebbs_lController {
 	@RequestMapping(value = "/sharebbs_l/update", method = RequestMethod.POST)
 	public String update(Sharebbs_lDTO dto, int shareno, Model model, String oldfile, 
 			String col, String word, String nowPage, HttpServletRequest request) {
-		String basePath = request.getRealPath("/sharebbs_l/storage");
-		int filesize = (int) dto.getFilesize();
+		
+		String basePath = request.getRealPath("/WEB-INF/views/sharebbs_l/storage");
+		int filesize = (int) dto.getFileMF().getSize();
 		String filename = "";
+		if (filesize > 0) {
+			filename = Utility.saveFile(dto.getFileMF(), basePath);
+		}
 
 		dto.setFilename(filename);
 		dto.setFilesize(filesize);
@@ -167,25 +171,22 @@ public class Sharebbs_lController {
 //=========CREATE============================================================
 	@RequestMapping(value = "/sharebbs_l/create", method = RequestMethod.POST)
 	public String create(HttpServletRequest request, Sharebbs_lDTO dto) {
-//		Sharebbs_lDTO dto = new Sharebbs_lDTO();
-		String basePath = request.getRealPath("/sharebbs_l/storage");
-		int filesize = (int) dto.getFilesize();
+
+		String basePath = request.getRealPath("/WEB-INF/views/sharebbs_l/storage");
+		int filesize = (int) dto.getFileMF().getSize();
 		String filename = "";
+		
+		if (filesize > 0) {
+			filename = Utility.saveFile(dto.getFileMF(), basePath);
+		}else{
+			filename = "default.jpg";
+		}
 		
 		dto.setFilename(filename);
 		dto.setFilesize(filesize);
-
-		boolean flag=false;
-		try {
-			flag = dao.create(dto);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		if (flag) {
+		if (dao.create(dto)) {
 			return "redirect:./list";
-
 		} else {
 			return "error";
 		}
@@ -196,7 +197,6 @@ public class Sharebbs_lController {
 
 		return "/sharebbs_l/create";
 	}
-	
 
 	
 //=========LIST=============================================================

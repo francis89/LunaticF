@@ -119,7 +119,7 @@ hr {
   
   <TR>
   	<TD colspan="2">
-  <img src="${pageContext.request.contextPath}/imgbbs/storage/${dto.filename}" style=" width: 400px; height: 350px;">
+  <img src="${pageContext.request.contextPath}/imagesshare/storage/${dto.filename}" style="width: 400px; height: 350px;">
     </TD>
  	</TR>
   

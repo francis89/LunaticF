@@ -17,6 +17,11 @@ input, textarea {
 
 <script type="text/javascript">
 	function incheck(f) {
+		if (f.id.value == "") {
+			alert("아이디를 입력하세요");
+			f.id.focus();
+			return false;
+		}
 		if (f.shtitle.value == "") {
 			alert("제목을 입력하세요");
 			f.shtitle.focus();
@@ -45,7 +50,7 @@ input, textarea {
 
 <body>
 
-	<DIV class="title">수정</DIV>
+	<DIV class="title">게시글 수정</DIV>
 
 	<FORM name='frm' 
 				method='POST' 
@@ -59,32 +64,45 @@ input, textarea {
 		<input type='hidden' name='nowPage' size='30' value='${param.nowPage}'>
 		<input type='hidden' name='oldfile' size='30' value='${dto.filename}'>
 		
-		<TABLE class='table'>
+<TABLE>
 			
-			<TR>
-				<TH>제목</TH>
-				<TD class="createtd"><input type='text' name='shtitle'
-					size='40' value='${dto.shtitle}'></TD>
-			</TR>
-			
-			<TR>
-				<TH>작성자</TH>
-				<TD class="createtd"><input type='text' name='id' size='40'
-					value='${dto.id}'></TD>
-			</TR>
-			
-			<tr>
-				<th>제품 종류 / 사이즈</th>
-				<td class="createtd"><input type="text" name="shcategory"
-					size="20" placeholder="제품 종류 / 사이즈"></td>
-			</tr>
+		<TR>
+			<TH>작성자</TH>
+			<TD class="createtd">
+	<input type='text' name='id' size='40' value='${dto.id}'>
+			</TD>
+		</TR>
+		
+		<TR>
+			<TH>제목</TH>
+			<TD class="createtd">
+	<input type='text' name='shtitle' size='40' value='${dto.shtitle}'>
+			</TD>
+		</TR>
+		
+		<tr>
+			<th>제품 종류 / 사이즈</th>
+			<td class="createtd">
+	<input type="text" name="shcategory" size="20" 
+			placeholder="제품 종류 / 사이즈">
+			</td>
+		</tr>
 
-			<TR>
-				<TH>내용</TH>
-				<TD class="createtd"><TEXTAREA name='shcontent' rows='10'
-						cols='100'>${dto.shcontent}</TEXTAREA></TD>
-			</TR>
-		</TABLE>
+		<TR>
+			<TH>내용</TH>
+			<TD class="createtd">
+	<TEXTAREA name='shcontent' rows='10' cols='100'>${dto.shcontent}</TEXTAREA>
+			</TD>
+		</TR>
+		
+		<TR>
+     	<TH>이미지등록</TH>
+     	<TD class="createtd">
+   <input type="file" name="fileMF" size="40">(${dto.filename})
+   		</TD>
+   	</TR> 
+		
+</TABLE>
 		
 		<br>
 		<DIV class="bottom">

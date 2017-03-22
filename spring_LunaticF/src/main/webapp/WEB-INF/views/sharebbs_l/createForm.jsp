@@ -66,7 +66,7 @@ function incheck(f) {
     <TR>
       <TH>작성자</TH>
       <TD class="createtd" colspan="8">
-    ${sessionScope.id}
+    <input value="${sessionScope.id}" name="id">
       </TD>
     </TR>
     
@@ -87,7 +87,7 @@ function incheck(f) {
     <TR>
       <TH>내용</TH>
       <TD class="createtd" colspan="8">
-		<textarea rows='100' cols='1000' name="shcontent"></textarea>
+		<textarea rows='20' cols='1000' name="shcontent"></textarea>
       </TD>
     </TR>
     

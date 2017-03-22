@@ -82,7 +82,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--//////////////////// UPDATE /////////////////////////////// -->
 	<update id="update" parameterType="Sharebbs_lDTO">
 		UPDATE sharebbs_l
-		set shcontent = #{shcontent}
+		set shcontent = #{shcontent},	shtitle = #{shtitle},
+		filename = #{filename}, shcategory=#{shcategory}
 		where shareno = #{shareno}
 	</update>
 

@@ -40,11 +40,11 @@
 <TABLE class="sharetable">
 
   <TR class='menutr'>
-  	<th>글번호</th>
-    <TH style="width: 50%">제목</TH>
-    <TH>작성자</TH>
-    <TH>등록일</TH>
-    <TH>조회수</TH>
+  	<th style="text-align: center;">글번호</th>
+    <TH style="text-align: center; width: 50%">제목</TH>
+    <TH style="text-align: center;">작성자</TH>
+    <TH style="text-align: center;">등록일</TH>
+    <TH style="text-align: center;">조회수</TH>
   </TR>
   
 <c:choose>
