@@ -74,8 +74,10 @@ body {
 							data-toggle="dropdown" href="#"> BOARD <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="${pageContext.request.contextPath }/finder_l/list">Finder</a></li>
-								<li><a href="${pageContext.request.contextPath }/imgbbs/list">ImgBBS</a></li>
-								<li><a href="${pageContext.request.contextPath }/memo/list">MEMO</a></li>
+								<li><a href="${pageContext.request.contextPath }/sharebbs_l/list">share</a></li>
+								<li><a href="${pageContext.request.contextPath }/notice_l/list">Notice</a></li>
+								<li><a href="${pageContext.request.contextPath }/memo_l/list">MEMO</a></li>
+								<li><a href="${pageContext.request.contextPath }/reserve_l/list">Reserve</a></li>
 							</ul></li>
 				
 					</ul>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+
+	<definition name="/notice_l/list" extends="main">
+		<put-attribute name="title" value="notice 목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/notice_l/list.jsp" />
+	</definition>
+	<definition name="/notice_l/read" extends="main">
+		<put-attribute name="title" value="notice 페이지"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/notice_l/read.jsp" />
+	</definition>
+	<definition name="/notice_l/create" extends="main">
+		<put-attribute name="title" value="notice 등록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/notice_l/createForm.jsp" />
+	</definition>
+	<definition name="/notice_l/update" extends="main">
+		<put-attribute name="title" value="notice 수정"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/notice_l/updateForm.jsp" />
+	</definition>
+	<definition name="/notice_l/delete" extends="main">
+		<put-attribute name="title" value="notice 삭제"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/notice_l/deleteForm.jsp" />
+	</definition>
+	
+
+
+
+</tiles-definitions> 

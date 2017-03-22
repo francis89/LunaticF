@@ -7,7 +7,16 @@ public class Notice_lDTO {
 	private String ncontent;
 	private String ndate;
 	private int nviewcnt;
+	private String id;
 	
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getNoticeno() {
 		return noticeno;
 	}

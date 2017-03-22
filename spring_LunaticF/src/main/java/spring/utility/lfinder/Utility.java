@@ -13,12 +13,14 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import spring.model.lfinder.ReDAOSTDInter;
+
 /*import spring.model.IReplyDAO;
 import spring.model.bbs.ReplyDAO;
 import spring.model.memo.MreplyDAO;*/
 
 public class Utility {
-	private static final String root ="/blog";
+	private static final String root ="/lfinder";
 
 	
 //	public static int rcount (int no,Object obj, String type){
@@ -33,10 +35,10 @@ public class Utility {
 //		return cnt;
 //    }
 	
-/*	public static int rcount (int no, IReplyDAO rdao){
+	public static int rcount (int no, ReDAOSTDInter irdao){
 	
-		return rdao.rcount(no);
-	}*/
+		return irdao.rcount(no);
+	}
 	 
 	  public static synchronized String getRoot(){
 	    return root;

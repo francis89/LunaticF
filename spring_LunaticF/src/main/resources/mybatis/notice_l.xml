@@ -20,20 +20,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="create" parameterType="Notice_lDTO">
 		INSERT INTO notice_l(noticeno,
-		ntitle, ncontent, ndate)
+		ntitle, ncontent, ndate, id)
 		VALUES((SELECT NVL(MAX(noticeno), 0) + 1 as
 		noticeno FROM notice_l),
-		#{ntitle}, #{ncontent}, sysdate)
+		#{ntitle}, #{ncontent}, sysdate, #{id})
 	</insert>
 	
 	<select id="list" resultType="Notice_lDTO" parameterType="Map">
-		SELECT noticeno, ntitle, ncontent, TO_CHAR(ndate,'yyyy-mm-dd') ndate,
-		r
-		FROM(
-		SELECT noticeno, ntitle, ncontent, ndate, rownum r
-		FROM(
-		SELECT noticeno, ntitle, ncontent, ndate
-		FROM notice_l
+		SELECT noticeno, ntitle, ncontent, ndate, nviewcnt,id, r 
+		FROM( 
+		    SELECT noticeno, ntitle, ncontent, ndate, nviewcnt,id, rownum r    
+		      FROM(
+		            SELECT noticeno, ntitle, ncontent, ndate,nviewcnt,id 
+		            FROM notice_l 
 		<where>
 			<choose>
 				<when test="col=='ntitle'">
@@ -47,16 +46,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</when>
 			</choose>
 		</where>
-		ORDER BY noticeno ASC
+		ORDER BY noticeno DESC
 		)
 		)                                                                            
    <![CDATA[                                                                        
    where r>=#{sno} and r<=#{eno}  
    ]]>
 	</select>
+	
 	<select id="read" resultType="Notice_lDTO" parameterType="int">
-		SELECT
-		ntitle, ncontent, ndate, nviewcnt
+		SELECT *
 		FROM notice_l
 		WHERE noticeno = #{noticeno}
 	</select>
