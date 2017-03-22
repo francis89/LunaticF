@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memo_l">
+	<delete id="delete" parameterType="int">
+	DELETE FROM memo_l 
+    WHERE memono = #{memono}
+	</delete>
+	<update id="update" parameterType="Memo_lDTO">
+	UPDATE memo_l 
+	SET mtitle =#{mtitle}, mcontent =#{mcontent}
+    WHERE memono = #{memono}
+	
+	</update>
+	<update id="upViewcnt" parameterType="int">
+	UPDATE memo_l 
+	SET mviewcnt = mviewcnt +1
+    WHERE memono = #{memono} 
+	
+	</update>
+	<select id="read" parameterType="int" resultType="Memo_lDTO">
+	SELECT memono, mtitle, mcontent,mnick, 
+	TO_CHAR(mdate,'yyyy-mm-dd')mdate, mviewcnt
+    FROM memo_l
+    WHERE memono = #{memono}
+	</select>
+	<insert id="create" parameterType="Memo_lDTO">
+	  INSERT INTO memo_l(memono, mtitle, mcontent,mnick, mpasswd, mdate)
+      VALUES((SELECT NVL(MAX(memono), 0) + 1 as memono FROM memo_l), #{mtitle}, #{mcontent},#{mnick}, #{mpasswd}, sysdate)
+	</insert>
+
+	<select id="total" parameterType="Map" resultType="int">
+	select count(*) from memo_l
+	<where>
+	 <if test="col=='mtitle'">
+	  title LIKE '%'||#{word}||'%'
+	 </if>
+	 <if test="col=='mcontent'">
+	  content LIKE '%'||#{word}||'%'
+	 </if>
+	</where>
+	
+	</select>
+	<select id="list" parameterType="Map" resultType="Memo_lDTO">
+	SELECT memono, mtitle, mcontent, mnick, to_char(mdate, 'yyyy-mm-dd') mdate, mviewcnt, r
+	FROM(SELECT memono, mtitle, mcontent, mnick, mdate, mviewcnt, rownum r
+		FROM (SELECT memono, mtitle, mcontent, mnick, mdate, mviewcnt
+			  FROM memo_l
+			  <where>
+			  <if test="col=='mtitle'">
+			  title LIKE '%'||#{word}||'%'
+			  </if>
+			  <if test="col=='mcontent'">
+			  content LIKE '%'||#{word}||'%'
+			  </if>
+			  
+			  </where>
+			  
+			  ORDER BY mdate DESC
+		)
+	)
+	<![CDATA[
+	WHERE r >= #{sno} and r <= #{eno}
+	]]>
+	
+	
+	</select>
+
+	
+	
+      
+</mapper>

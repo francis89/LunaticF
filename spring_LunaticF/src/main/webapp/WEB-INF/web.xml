@@ -80,4 +80,13 @@
 	    <url-pattern>/*</url-pattern> 
 	 </filter-mapping>
 	 
+	 <!-- fileDown -->
+	<servlet>
+    	<servlet-name>fileDown</servlet-name>
+    	<servlet-class>spring.utility.lfinder.FileDownload</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>fileDown</servlet-name>
+    	<url-pattern>/download</url-pattern>
+    </servlet-mapping>
 </web-app>

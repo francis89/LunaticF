@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shreply">
+
+	
+<!-- ==========RCOUNT=========================================== -->
+	<select id="rcount" parameterType="int" resultType="int">
+	     SELECT count(*) FROM shreply
+	     WHERE shareno = #{shareno}
+    </select>
+    
+    
+<!-- ==========CREATE=========================================== -->
+	<insert id="create" parameterType="sharebbs_lReplyDTO">
+		INSERT INTO shreply(shrnum, shrcontent, shrregdate, id, shareno)
+		values((select nvl(max(shrnum),0)+1 from shreply) , #{shrcontent}, sysdate, #{id}, #{shareno})
+	</insert>
+	
+	
+<!-- ==========READ=========================================== -->
+	<select id="read" parameterType="int" resultType="sharebbs_lReplyDTO">
+		select * from shreply
+		where shrnum = #{shrnum}
+	</select>
+
+
+<!-- ==========UPDATE========================================= -->
+	<update id="update" parameterType="sharebbs_lReplyDTO">
+		update shreply
+		set shrcontent = #{shrcontent}
+		where shrnum = #{shrnum}
+	</update>
+
+
+<!-- ==========DELETE========================================= -->
+	<delete id="delete" parameterType="int">
+		delete from shreply
+		where shrnum = #{shrnum}
+	</delete>
+	
+	<delete id="bdelete" parameterType="int">
+		delete from shreply
+		where shareno = #{shareno}
+	</delete>
+	
+	
+<!-- ==========LIST=========================================== -->
+	<select id="list" parameterType="Map" resultType="sharebbs_lReplyDTO">
+		select shrnum, shrcontent, to_char(shrregdate,'yyyy-mm-dd') shrregdate, id,	shareno, r
+		FROM(
+				select shrnum, shrcontent, shrregdate, id, shareno, rownum r
+				FROM(
+					select shrnum, shrcontent, shrregdate, id, shareno
+					from shreply
+					where shareno = #{shareno}
+					order by shrnum DESC
+				)
+<![CDATA[
+)WHERE r >= #{sno} and r <= #{eno}
+]]>
+	</select>
+
+
+<!-- ==========TOTAL=========================================== -->
+	<select id="total" resultType="int" parameterType="int">
+		select count(*) from shreply
+		where shareno=#{shareno}
+	</select>
+
+</mapper>

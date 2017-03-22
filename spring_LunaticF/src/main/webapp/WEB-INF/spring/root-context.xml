@@ -67,6 +67,8 @@ xsi:schemaLocation="
 				<value>/WEB-INF/spring/tilesFinder_l.xml</value>
 				<value>/WEB-INF/spring/tilesNotice_l.xml</value>
 				<value>/WEB-INF/spring/tilesReserve_l.xml</value>
+				<value>/WEB-INF/spring/tilesMemo_l.xml</value>
+				<value>/WEB-INF/spring/tilesSharebbs_l.xml</value>
 			</list>
 		</property>
 	</bean>

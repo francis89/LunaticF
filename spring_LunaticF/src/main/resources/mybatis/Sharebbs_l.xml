@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="sharebbs_l">
+
+
+<!--//////////////////// UPVIEWCNT //////////////////////////// -->		
+	<update id="upViewcnt" parameterType="int">
+		UPDATE sharebbs_l 
+		SET shviewcnt = shviewcnt + 1 
+		WHERE shareno = #{shareno}
+	</update>
+	
+<!--//////////////////// TOTAL //////////////////////////////// -->		
+  <select id="total" parameterType="Map" resultType="int">
+  	SELECT COUNT(*) FROM sharebbs_l
+  <where>
+  	<choose>
+    	<when test="col=='id'">
+      	id like '%'||#{word}||'%'
+      </when>
+      <when test="col=='shtitle'">
+        shtitle like '%'||#{word}||'%'
+      </when>
+      <when test="col=='shcontent'">
+        shcontent like '%'||#{word}||'%'
+      </when>           
+      <when test="col=='shcategory'">
+       shcategory like '%'||#{word}||'%'
+     </when> 
+    </choose>      
+  </where> 
+  </select> 
+  
+<!--//////////////////// LIST//////////////////////////////// -->
+  <select id="list" resultType="Sharebbs_lDTO" parameterType="Map">
+		SELECT shareno, shtitle, id, shcategory, shdate, shviewcnt, r 
+		FROM (
+			SELECT shareno, shtitle, id, shcategory, shdate, shviewcnt, rownum r
+			FROM (
+				SELECT shareno, shtitle, id, shcategory, shdate, shviewcnt  
+				FROM sharebbs_l
+   <where>
+    <choose>
+     <when test="col=='id'">
+       id like '%'||#{word}||'%'
+     </when>
+     <when test="col=='shtitle'">
+       shtitle like '%'||#{word}||'%'
+     </when>
+     <when test="col=='shcontent'">
+       shcontent like '%'||#{word}||'%'
+     </when>           
+     <when test="col=='shcategory'">
+       shcategory like '%'||#{word}||'%'
+     </when>           
+    </choose>      
+   </where>                                                                 
+		ORDER BY shareno DESC
+ 			)
+ 		)
+
+<![CDATA[where r>=#{sno} and r<=${eno}]]>                                                           
+  </select>
+
+<!--//////////////////// READ /////////////////////////////// -->
+  <select id="read" resultType="Sharebbs_lDTO" parameterType="int" >
+    SELECT shareno, shtitle, shcontent, filename, shcategory, shviewcnt, shdate,id
+		FROM sharebbs_l
+		WHERE shareno = #{shareno}
+  </select>
+
+<!--//////////////////// CREATE /////////////////////////////// -->	
+	<insert id="create" parameterType="Sharebbs_lDTO">
+		INSERT INTO sharebbs_l(shareno,shtitle,shcontent,filename,filesize,shcategory,shdate,id)  
+		VALUES((select nvl(max(shareno),0)+1 from sharebbs_l), #{shtitle}, #{shcontent},
+					#{filename}, #{filesize}, #{shcategory}, sysdate, #{id}) 
+	</insert>
+	
+<!--//////////////////// UPDATE /////////////////////////////// -->
+	<update id="update" parameterType="Sharebbs_lDTO">
+		UPDATE sharebbs_l
+		set shcontent = #{shcontent}
+		where shareno = #{shareno}
+	</update>
+
+<!--//////////////////// DELETE /////////////////////////////// -->
+	<delete id="delete" parameterType="int">
+		DELETE from sharebbs_l
+		WHERE shareno = #{shareno}
+	</delete>
+      
+</mapper>
