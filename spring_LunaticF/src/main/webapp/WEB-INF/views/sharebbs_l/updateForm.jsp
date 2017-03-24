@@ -17,23 +17,23 @@ input, textarea {
 
 <script type="text/javascript">
 	function incheck(f) {
-		if (f.id.value == "") {
-			alert("아이디를 입력하세요");
-			f.id.focus();
-			return false;
-		}
-		if (f.shtitle.value == "") {
+		if(f.shtitle.value==""){
 			alert("제목을 입력하세요");
 			f.shtitle.focus();
 			return false;
 		}
-		  // content: textarea name
-	    if (CKEDITOR.instances['shcontent'].getData() == '') {
-	      window.alert('내용을 입력해 주세요.');
-	      CKEDITOR.instances['shcontent'].focus();
-	      return false;
-	    }
-
+		
+		if(f.shcategory.value==""){
+			alert("제품의 종류와 사이즈를 입력하세요");
+			f.shcategory.focus();
+			return false;
+		}
+		
+		if (CKEDITOR.instances['shcontent'].getData() == '') {
+		  window.alert('내용을 입력해 주세요.');
+		  CKEDITOR.instances['shcontent'].focus();
+		  return false;
+		}
 	}
 </script>
 
@@ -62,7 +62,6 @@ input, textarea {
 		<input type='hidden' name='col' size='30' value='${param.col}'>
 		<input type='hidden' name='word' size='30' value='${param.word}'>
 		<input type='hidden' name='nowPage' size='30' value='${param.nowPage}'>
-		<input type='hidden' name='oldfile' size='30' value='${dto.filename}'>
 		
 <TABLE>
 			
@@ -94,13 +93,6 @@ input, textarea {
 	<TEXTAREA name='shcontent' rows='10' cols='100'>${dto.shcontent}</TEXTAREA>
 			</TD>
 		</TR>
-		
-		<TR>
-     	<TH>이미지등록</TH>
-     	<TD class="createtd">
-   <input type="file" name="fileMF" size="40">(${dto.filename})
-   		</TD>
-   	</TR> 
 		
 </TABLE>
 		

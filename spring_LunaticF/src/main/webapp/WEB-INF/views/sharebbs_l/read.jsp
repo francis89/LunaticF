@@ -59,7 +59,7 @@ hr {
 </style>
 
 <script type="text/javascript">
-	
+//----------------------------------------
 	function bupdate(){
 		var url = "update";
 		url += "?shareno=${dto.shareno}";
@@ -75,7 +75,6 @@ hr {
 		url += "&col=${param.col}";
 		url += "&word=${param.word}";
 		url += "&nowPage=${param.nowPage}";
-		url += "&oldfile=${dto.filename}";
 		location.href = url;
 	}
 	
@@ -86,6 +85,49 @@ hr {
 		url += "&nowPage=${param.nowPage}";
 		location.href=url;
 	}
+	
+	
+//--------------------------------------------	
+	function rcheck(tarea) {
+		if ('${sessionScope.id}' == "") {
+			if (confirm("로그인후 댓글를 쓰세요")) {
+				var url = "${pageContext.request.contextPath }/member_l/login";
+				url = url + "?no=${dto.shareno}";
+				url = url + "&type=shareno";
+				url = url + "&nowPage=${param.nowPage}";
+				url = url + "&nPage=${nPage}";
+				url = url + "&col=${param.col}";
+				url = url + "&word=${param.word}";
+				location.href = url;
+			} else {
+				tarea.blur();
+			}
+		}
+	}
+
+	function input(f) {
+		if ('${sessionScope.id}' == "") {
+			if (confirm("로그인후 댓글를 쓰세요")) {
+				var url = "${pageContext.request.contextPath }/member_l/login";
+				url = url + "?no=${dto.shareno}";
+				url = url + "&type=shareno";
+				url = url + "&nowPage=${param.nowPage}";
+				url = url + "&nPage=${nPage}";
+				url = url + "&col=${param.col}";
+				url = url + "&word=${param.word}";
+				location.href = url;
+				return false;
+			} else {
+
+				return false;
+			}
+		} else if (f.shrcontent.value == "") {
+			alert("댓글 내용을 입력하세요.");
+			f.shrcontent.focus();
+			return false;
+		}
+	}
+	
 	
 	function rupdate(shrnum, shrcontent) {
 		var f = document.rform;
@@ -116,30 +158,24 @@ hr {
  
 <DIV class="title">조회</DIV>
   <TABLE>
-  
+   
   <TR>
-  	<TD colspan="2">
-  <img src="${pageContext.request.contextPath}/imagesshare/storage/${dto.filename}" style="width: 400px; height: 350px;">
-    </TD>
- 	</TR>
-  
-  <TR>
-    <TH style="width: 40%">제목</TH>
+    <TH style="width: 30%">제목</TH>
     <TD>${dto.shtitle}</TD>
   </TR>
   
   <TR>
-    <TH style="width: 40%">작성자</TH>
+    <TH style="width: 30%">작성자</TH>
     <TD>${dto.id}</TD>
   </TR>
 
   <TR>
-    <TH style="width: 40%">종류 및 사이즈</TH>
+    <TH style="width: 30%">종류 및 사이즈</TH>
     <TD>${dto.shcategory}</TD>
   </TR>
   
   <TR>
-    <TH style="width: 40%">내용</TH>
+    <TH style="width: 30%">내용</TH>
     <TD>${dto.shcontent}</TD>
   </TR>
   

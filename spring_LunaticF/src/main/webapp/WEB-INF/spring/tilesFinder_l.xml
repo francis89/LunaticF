@@ -8,5 +8,9 @@
 		<put-attribute name="title" value="공공시설 찾기 목록"></put-attribute>
 		<put-attribute name="body" value="/WEB-INF/views/finder_l/list.jsp" />
 	</definition>
+	  <definition name="/finder_l/read" extends="main">
+		<put-attribute name="title" value="공공시설 찾기 목록"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/finder_l/read.jsp" />
+	</definition>
    
 </tiles-definitions> 

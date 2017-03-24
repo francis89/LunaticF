@@ -5,22 +5,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class Sharebbs_lDTO {
 	private int shareno;              
 	private int shviewcnt;            
-	private int filesize;             
 	private String shtitle;              
 	private String shcontent;            
-	private String filename;
 	private String shcategory;           
 	private String shdate;          
 	private String id;
-	private MultipartFile fileMF;
 	
-	public MultipartFile getFileMF() {
-		return fileMF;
-	}
-	
-	public void setFileMF(MultipartFile fileMF) {
-		this.fileMF = fileMF;
-	}
 	
 	public int getShareno() {
 		return shareno;
@@ -39,18 +29,6 @@ public class Sharebbs_lDTO {
 	}
 	public void setShcontent(String shcontent) {
 		this.shcontent = shcontent;
-	}
-	public String getFilename() {
-		return filename;
-	}
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
-	public int getFilesize() {
-		return filesize;
-	}
-	public void setFilesize(int filesize) {
-		this.filesize = filesize;
 	}
 	public String getShcategory() {
 		return shcategory;

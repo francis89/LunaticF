@@ -16,10 +16,16 @@ import spring.utility.lfinder.Utility;
 public class Finder_lController {
 	
 	
+	@RequestMapping(value = "/finder_l/read")
+	public String read(HttpServletRequest request) {
+
+
+		return "/finder_l/read";
+	}
 	@RequestMapping(value = "/finder_l/list")
 	public String list(HttpServletRequest request) {
-
-
+		
+		
 		return "/finder_l/list";
 	}
 

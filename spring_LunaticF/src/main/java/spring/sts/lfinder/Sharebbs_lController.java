@@ -79,24 +79,14 @@ public class Sharebbs_lController {
 	
 //===============UPDATE============================================================	
 	@RequestMapping(value = "/sharebbs_l/update", method = RequestMethod.POST)
-	public String update(Sharebbs_lDTO dto, int shareno, Model model, String oldfile, 
-			String col, String word, String nowPage, HttpServletRequest request) {
+	public String update(Sharebbs_lDTO dto, int shareno, Model model, String col, 
+			String word, String nowPage, HttpServletRequest request) {
 		
-		String basePath = request.getRealPath("/WEB-INF/views/sharebbs_l/storage");
-		int filesize = (int) dto.getFileMF().getSize();
-		String filename = "";
-		if (filesize > 0) {
-			filename = Utility.saveFile(dto.getFileMF(), basePath);
-		}
-
-		dto.setFilename(filename);
-		dto.setFilesize(filesize);
 
 		Map map = new HashMap();
 		map.put("shareno", dto.getShareno());
 
 			if (dao.update(dto)) {
-				Utility.deleteFile(basePath, oldfile);
 				model.addAttribute("nowPage", nowPage);
 				model.addAttribute("col", col);
 				model.addAttribute("word", word);
@@ -106,10 +96,9 @@ public class Sharebbs_lController {
 			}
 	}
 
-
 	@RequestMapping(value = "/sharebbs_l/update", method = RequestMethod.GET)
-	public String update(int shareno, Model model, String col, String word, 
-			String nowPage) {
+	public String update(int shareno, Model model, String col,
+			String word, String nowPage) {
 		model.addAttribute("dto", dao.read(shareno));
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("col", col);
@@ -172,19 +161,6 @@ public class Sharebbs_lController {
 	@RequestMapping(value = "/sharebbs_l/create", method = RequestMethod.POST)
 	public String create(HttpServletRequest request, Sharebbs_lDTO dto) {
 
-		String basePath = request.getRealPath("/WEB-INF/views/sharebbs_l/storage");
-		int filesize = (int) dto.getFileMF().getSize();
-		String filename = "";
-		
-		if (filesize > 0) {
-			filename = Utility.saveFile(dto.getFileMF(), basePath);
-		}else{
-			filename = "default.jpg";
-		}
-		
-		dto.setFilename(filename);
-		dto.setFilesize(filesize);
-		
 		if (dao.create(dto)) {
 			return "redirect:./list";
 		} else {

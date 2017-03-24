@@ -91,11 +91,6 @@ function incheck(f) {
       </TD>
     </TR>
     
-    <TR>
-      <TH>이미지등록</TH>
-      <TD><input type="file" name="fileMF" size="40"></TD>
-    </TR>
-    
   </TABLE>
   
   <br>

@@ -71,7 +71,7 @@
       </c:if>
       </A>
       <c:if test="${util:newImg(fn:substring(dto.shdate,0,10)) }">
-    <img src="${pageContext.request.contextPath }/webapp/css/images/new.gif">  
+    <img src="${pageContext.request.contextPath }/css/images/new.gif">  
     	</c:if>
     </TD>
     
