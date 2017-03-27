@@ -16,9 +16,9 @@ function read(i){
 	location.href=url;
 }
 
-function testfunc(test) {
+function jsonOpen(test) {
 	var ida = document.getElementById(test.getAttribute('id')).getAttribute('id');
-	alert(ida);
+	//alert(ida);
 	
 	$.getJSON(
    	   "../json/"+ ida +".json",
@@ -53,39 +53,39 @@ function response(result, textStatus) {
 <body>
 	<table>
 		<tr>
-			<td id="GangNam(default)" onmousedown='testfunc(this)'>강남구</td>
-			<td id="GangDong" onmousedown='testfunc(this)'>강동구</td>
-			<td id="GangBuk(default)" onmousedown='testfunc(this)'>강북구</td>
-			<td id="GangSeo" onmousedown='testfunc(this)'>강서구</td>
-			<td id="GwanAk(default)" onmousedown='testfunc(this)'>관악구</td>
+			<td id="GangNam(default)" onmousedown='jsonOpen(this)'>강남구</td>
+			<td id="GangDong" onmousedown='jsonOpen(this)'>강동구</td>
+			<td id="GangBuk(default)" onmousedown='jsonOpen(this)'>강북구</td>
+			<td id="GangSeo" onmousedown='jsonOpen(this)'>강서구</td>
+			<td id="GwanAk(default)" onmousedown='jsonOpen(this)'>관악구</td>
 		</tr>
 		<tr>
-			<td id="GwangJin" onmousedown='testfunc(this)'>광진구</td>
-			<td id="Guro" onmousedown='testfunc(this)'>구로구</td>
-			<td id="GeumCheon(default)" onmousedown='testfunc(this)'>금천구</td>
-			<td id="NoWon(default)" onmousedown='testfunc(this)'>노원구</td>
-			<td id="DoBong(default)" onmousedown='testfunc(this)'>도봉구</td>
+			<td id="GwangJin" onmousedown='jsonOpen(this)'>광진구</td>
+			<td id="Guro" onmousedown='jsonOpen(this)'>구로구</td>
+			<td id="GeumCheon(default)" onmousedown='jsonOpen(this)'>금천구</td>
+			<td id="NoWon(default)" onmousedown='jsonOpen(this)'>노원구</td>
+			<td id="DoBong(default)" onmousedown='jsonOpen(this)'>도봉구</td>
 		</tr>
 		<tr>
-			<td id="DongDaeMun(default)" onmousedown='testfunc(this)'>동대문구</td>
-			<td id="DongJak" onmousedown='testfunc(this)'>동작구</td>
-			<td id="Mapo" onmousedown='testfunc(this)'>마포구</td>
-			<td id="SeoDaeMun(default)" onmousedown='testfunc(this)'>서대문구</td>
-			<td id="SeoCho" onmousedown='testfunc(this)'>서초구</td>
+			<td id="DongDaeMun(default)" onmousedown='jsonOpen(this)'>동대문구</td>
+			<td id="DongJak" onmousedown='jsonOpen(this)'>동작구</td>
+			<td id="Mapo" onmousedown='jsonOpen(this)'>마포구</td>
+			<td id="SeoDaeMun(default)" onmousedown='jsonOpen(this)'>서대문구</td>
+			<td id="SeoCho" onmousedown='jsonOpen(this)'>서초구</td>
 		</tr>
 		<tr>
-			<td id="SungDong" onmousedown='testfunc(this)'>성동구</td>
-			<td id="SungBuk(default)" onmousedown='testfunc(this)'>성북구</td>
-			<td id="SongPa" onmousedown='testfunc(this)'>송파구</td>
-			<td id="YangCheon" onmousedown='testfunc(this)'>양천구</td>
-			<td id="YeongDeungPo" onmousedown='testfunc(this)'>영등포구</td>
+			<td id="SungDong" onmousedown='jsonOpen(this)'>성동구</td>
+			<td id="SungBuk(default)" onmousedown='jsonOpen(this)'>성북구</td>
+			<td id="SongPa" onmousedown='jsonOpen(this)'>송파구</td>
+			<td id="YangCheon" onmousedown='jsonOpen(this)'>양천구</td>
+			<td id="YeongDeungPo" onmousedown='jsonOpen(this)'>영등포구</td>
 		</tr>
 		<tr>
-			<td id="YongSan" onmousedown='testfunc(this)'>용산구</td>
-			<td id="EunPyeong(default)" onmousedown='testfunc(this)'>은평구</td>
-			<td id="JongNo(default)" onmousedown='testfunc(this)'>종로구</td>
-			<td id="JungGu(default)" onmousedown='testfunc(this)'>중구</td>
-			<td id="JungNang(default)" onmousedown='testfunc(this)'>중랑구</td>
+			<td id="YongSan" onmousedown='jsonOpen(this)'>용산구</td>
+			<td id="EunPyeong(default)" onmousedown='jsonOpen(this)'>은평구</td>
+			<td id="JongNo(default)" onmousedown='jsonOpen(this)'>종로구</td>
+			<td id="JungGu(default)" onmousedown='jsonOpen(this)'>중구</td>
+			<td id="JungNang(default)" onmousedown='jsonOpen(this)'>중랑구</td>
 		</tr>
 	</table>
 	<div id='div1'></div><br>
