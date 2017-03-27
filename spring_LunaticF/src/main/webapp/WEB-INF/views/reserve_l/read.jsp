@@ -101,12 +101,13 @@
 <input type="button" value="등록" onclick="rcreate()">
 </c:if>
 <input type="button" value="목록" onclick="rlist()">
-<c:if test="${not empty sessionScope.id && sessionScope.id == dto.id || sessionScope.grade == 'A'}">
-	<input type="button" value="수정" onclick="rupdate()">
-	<input type="button" value="삭제" onclick="rdelete()">
+<c:if test="${not empty sessionScope.id && sessionScope.id == dto.id}">
+<input type="button" value="수정" onclick="rupdate()">
+<input type="button" value="삭제" onclick="rdelete()">
 </c:if>
 <c:if	test="${not empty sessionScope.id && sessionScope.grade=='A' }">
-	<input type="button" value="답변" onclick="rreply()">
+<input type="button" value="답변" onclick="rreply()">
+<input type="button" value="삭제" onclick="rdelete()">
 </c:if>
 </div>
 </body>

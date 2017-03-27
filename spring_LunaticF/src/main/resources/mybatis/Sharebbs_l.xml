@@ -67,23 +67,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--//////////////////// READ /////////////////////////////// -->
   <select id="read" resultType="Sharebbs_lDTO" parameterType="int" >
-    SELECT shareno, shtitle, shcontent, filename, shcategory, shviewcnt, shdate,id
+    SELECT shareno, shtitle, shcontent, shcategory, shviewcnt, shdate, id
 		FROM sharebbs_l
 		WHERE shareno = #{shareno}
   </select>
 
 <!--//////////////////// CREATE /////////////////////////////// -->	
 	<insert id="create" parameterType="Sharebbs_lDTO">
-		INSERT INTO sharebbs_l(shareno,shtitle,shcontent,filename,filesize,shcategory,shdate,id)  
-		VALUES((select nvl(max(shareno),0)+1 from sharebbs_l), #{shtitle}, #{shcontent},
-					#{filename}, #{filesize}, #{shcategory}, sysdate, #{id}) 
+		INSERT INTO sharebbs_l(shareno, shtitle, shcontent, shcategory, shdate, id)  
+		VALUES((select nvl(max(shareno),0)+1 from sharebbs_l), 
+					#{shtitle}, #{shcontent}, #{shcategory}, sysdate, #{id}) 
 	</insert>
 	
 <!--//////////////////// UPDATE /////////////////////////////// -->
 	<update id="update" parameterType="Sharebbs_lDTO">
 		UPDATE sharebbs_l
-		set shcontent = #{shcontent},	shtitle = #{shtitle},
-		filename = #{filename}, shcategory=#{shcategory}
+		set shcontent = #{shcontent},	shtitle = #{shtitle}, shcategory=#{shcategory}
 		where shareno = #{shareno}
 	</update>
 

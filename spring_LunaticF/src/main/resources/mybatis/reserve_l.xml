@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="reserve_l">
 	<update id="update" parameterType="Reserve_lDTO">
 		UPDATE reserve_l SET 
-		retitle=#{retitle}, recontent=#{recontent}, reterm=#{reterm}, retimnum=#{retimnum}
+		retitle=#{retitle}, recontent=#{recontent}, reterm=#{reterm}, restate=#{restate}, retimnum=#{retimnum}
 		WHERE reserveno=#{reserveno}
 	</update>
 	<delete id="delete" parameterType="int">
@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE reserveno = #{reserveno}
 	</delete>
 	<select id="readReply" parameterType="int" resultType="Reserve_lDTO">
-		SELECT reserveno,retitle,grpno,indent,ansnum
+		SELECT reserveno,retitle,grpno,indent,ansnum, reterm, restate, retimnum
 		FROM reserve_l
 		WHERE reserveno = #{reserveno}
 	</select>
@@ -89,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    ]]>
 	</select>
 	<select id="read" resultType="Reserve_lDTO" parameterType="int">
-		SELECT reserveno, retitle, recontent, reterm, restate, retimnum, redate, reviewcnt, id
+		SELECT reserveno, retitle, recontent, TO_CHAR(reterm, 'yyyy-mm-dd') as reterm, restate, retimnum, TO_CHAR(redate, 'yyyy-mm-dd hh:mm:ss') as redate, reviewcnt, id
 		FROM reserve_l
 		WHERE reserveno = #{reserveno}
 	</select>

@@ -44,7 +44,6 @@ function read(id){
 </SELECT>
 <input type="text" name="word" value='${word }'>
 <input type="submit" value="검색">
-<input type="button" value="회원가입" onclick="location.href='./create'"> 
 </FORM>
  </DIV>
  

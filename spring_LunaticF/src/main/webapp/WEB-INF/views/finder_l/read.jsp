@@ -1,73 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 TRansitional//EN" "http://www.w3.org/TR/html4/loose.dTD">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript" src="../json/jquery.js"></script>
-	<script type="text/javascript" src="../json/seoul.json"></script>
-<style type="text/css">
-	TABLE{
-	  margin: 0 auto;            /* 테이블 가운데 정렬 */
-	  border-color: #AAAAAA;     /* 테이블 외곽선 색깔 */ 
-	  border-widTH: 1px;         /* 테이블 외곽선 두께 */ 
-	  border-style: solid;       /* 테이블 외곽선 스타일 */
-	  border-collapse: collapse; /* 컬럼의 외곽선을 하나로 결합 */
-	 
-	}
-	 
-	TH{
-	  border-color: #AAAAAA;     /* 테이블 외곽선 색깔 */ 
-	  border-widTH: 1px;         /* 테이블 외곽선 두께 */ 
-	  border-style: solid;       /* 테이블 외곽선 스타일 */
-	 
-	  color: black;            /* 글자 색 */ 
-	  background-color: white; /* 배경 색 */
-	  padding: 5px;              /* 셀 내부 간격 */
-	}
-	 
-	 
-	TD{
-	  border-color: #AAAAAA;     /* 테이블 외곽선 색깔 */ 
-	  border-widTH: 1px;         /* 테이블 외곽선 두께 */ 
-	  border-style: solid;       /* 테이블 외곽선 스타일 */
-	 
-	  color: #000000;            /* 글자 색 */ 
-	  background-color: white; /* 배경 색 */
-	  padding: 5px;              /* 셀 내부 간격 */  
-	}
-	 
-	.input{
-	  padding: 0px;
-	  border-color: #AAAAAA;     /* 테이블 외곽선 색깔 */ 
-	  border-widTH: 1px;         /* 테이블 외곽선 두께 */ 
-	  border-style: solid;       /* 테이블 외곽선 스타일 */
-	 
-	  border-top-style: none;
-	  border-right-style: none;
-	  border-left-style: none;
-	  
-	}
-	 
-	A:link {     /* A 태그의 링크 속성 */
-	  text-decoration: none;     /* 문자열 꾸미기값을 지정하지 않음, 밑줄 삭제 */
-	  color: black;              /* 글자색깔 검정 */
-	}
-	 
-	A:hover{     /* A 태그에 마우스가 올라 갔을 경우 */
-	  text-decoration: none;     /* 문자열 꾸미기값을 지정하지 않음, 밑줄 삭제 */
-	  background-color: #E6F7FF; /* 배경 색 변경*/
-	  color: black;              /* 문자열 색깔 */ 
-	}
-	 
-	A:visited{     /* A 태그의 링크를 방문한 경우 */
-	  text-decoration: none;     /* 문자열 꾸미기값을 지정하지 않음, 밑줄 삭제 */
-	  color: black;              /* 글자색깔 검정 */
-	}
-</style>
+	<script type="text/javascript"
+    src="//apis.daum.net/maps/maps3.js?apikey=da246ae8b7c6b06cd80ebdbcac2b98ce&libraries=services"></script>
+
 <script type="text/javascript">
+
 $(document).ready(function() {
     $.getJSON(
-      "../json/seoul.json",
+      "../json/${ida}.json",
       response
   );
 });
@@ -79,105 +24,91 @@ function response(result,textStatus){
 	//alert('size: ' + size);
 	//var i = 0;
 	
-	
+	var i = ${i};
 	$("#panel").append(
 				"<TR>"+
-	                "<TH>시설명</TH>"+
-	                "<TD>"+result.DATA[1].CENTER_NAME+"</TD>"+
+	                "<TH>서비스명</TH>"+
+	                "<TD>"+result.DATA[i].SVCNM+"</TD>"+
                 "</TR>"+
                 "<TR>"+
-	                "<TH>주소</TH>"+
-	                "<TD>"+result.DATA[1].ADDRESS+"</TD>"+
+                	"<TH>소분류명</TH>"+
+                	"<TD>"+result.DATA[i].MINCLASSNM+"</TD>"+
                 "</TR>"+
                 "<TR>"+
-                	"<TH>우편번호</TH>"+
-                	"<TD>"+result.DATA[1].ZIP+"</TD>"+
+	                "<TH>장소명</TH>"+
+	                "<TD>"+result.DATA[i].PLACENM+"</TD>"+
                 "</TR>"+
                 "<TR>"+
-                	"<TH>시설소개</TH>"+
-                	"<TD>"+result.DATA[1].INTRO+"</TD>"+
+                	"<TH>예약상태</TH>"+
+                	"<TD>"+result.DATA[i].SVCSTATNM+"</TD>"+
                 "</TR>"+
                 "<TR>"+
-                	"<TH>부대시설</TH>"+
-                	"<TD>"+result.DATA[1].SUBSIDIARY+"</TD>"+
-                "</TR>"+
-                "<TR>"+
-                	"<TH>홈페이지</TH>"+
-               		"<TD>"+result.DATA[1].HOMEPAGE+"</TD>"+
+                	"<TH>접수종료일시</TH>"+
+               		"<TD>"+result.DATA[i].RCPTENDDT+"</TD>"+
                 "</TR>"+
                	"<TR>"+
-	                "<TH>전화번호</TH>"+
-	                "<TD>"+result.DATA[1].TEL+"</TD>"+
+	                "<TH>대상</TH>"+
+	                "<TD>"+result.DATA[i].USETGTINFO+"</TD>"+
 	            "</TR>"+
                 "<TR>"+
-	                "<TH>E-Mail</TH>"+
-	                "<TD>"+result.DATA[1].EMAIL+"</TD>"+
+	                "<TH>서비스 상태</TH>"+
+	                "<TD>"+result.DATA[i].SVCSTATNM+"</TD>"+
+	            "</TR>"+
+                "<TR>"+
+	                "<TH>URL</TH>"+
+	                "<TD><a href='"+result.DATA[i].SVCURL+"'>"+result.DATA[i].SVCURL+"</a></TD>"+
 	            "</TR>"
             ); 
-		
-
 	
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	mapOption = { 
+	    center: new daum.maps.LatLng(result.DATA[i].X, result.DATA[i].Y), // 지도의 중심좌표
+	    level: 3 // 지도의 확대 레벨
+	};
+	//default x:37.5691675 y:126.9846888 종로 코아빌딩
+	var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+	// 마커가 표시될 위치입니다 
+	var markerPosition  = new daum.maps.LatLng(result.DATA[i].X, result.DATA[i].Y); 
+
+	// 마커를 생성합니다
+	var marker = new daum.maps.Marker({
+	position: markerPosition
+	});
+
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+
+	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+	// marker.setMap(null);    
+	var iwContent = '<div style="font-size: 2px;">'+result.DATA[i].SVCNM+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	iwPosition = new daum.maps.LatLng(result.DATA[i].X, result.DATA[i].Y); //인포윈도우 표시 위치입니다
+
+	// 인포윈도우를 생성합니다
+	var infowindow = new daum.maps.InfoWindow({
+	position : iwPosition, 
+	content : iwContent 
+	});
+
+	// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+	infowindow.open(map, marker); 
+		
 }
+
+
 </script>
 
 </head>
 
 <body>
-
-<TABLE id="panel">
-	<TR>
-		<TD colspan="2" align="center">
-			<div id="map" style="width:500px;height:400px;"></div>
-			
-	<script type="text/javascript"
-		src="//apis.daum.net/maps/maps3.js?apikey=da246ae8b7c6b06cd80ebdbcac2b98ce&libraries=services"></script>
-	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 3
-		// 지도의 확대 레벨
-		};
-
-		// 지도를 생성합니다    
-		var map = new daum.maps.Map(mapContainer, mapOption);
-
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new daum.maps.services.Geocoder();
-
-		// 주소로 좌표를 검색합니다
-		geocoder
-				.addr2coord('잠실야구장',
-						function(status, result) {
-
-							// 정상적으로 검색이 완료됐으면 
-							if (status === daum.maps.services.Status.OK) {
-
-								var coords = new daum.maps.LatLng(
-										result.addr[0].lat, result.addr[0].lng);
-
-								// 결과값으로 받은 위치를 마커로 표시합니다
-								var marker = new daum.maps.Marker({
-									map : map,
-									position : coords
-								});
-
-								// 인포윈도우로 장소에 대한 설명을 표시합니다
-								var infowindow = new daum.maps.InfoWindow(
-										{
-											content : '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-										});
-								infowindow.open(map, marker);
-
-								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-								map.setCenter(coords);
-							}
-						});
-	</script>
-		</TD>
-	</TR>
-	
-</TABLE>
-
+<table id="panel">
+<tr>
+		<td  colspan="2" align="center">
+		
+		<div id="map" style="width:400px;height:350px;"></div>
+		
+		</td>
+</tr>
+</table>
 </body>
 </html>

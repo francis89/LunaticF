@@ -78,20 +78,20 @@ function incheck(f) {
       </TD>
       <tr>
       <TH>예약날짜</TH>
-      <TD><input type="text" name="reterm"></TD>
+      <TD><input type="text" name="reterm" value="${dto.reterm }"></TD>
     </TR>
     <TR>
       <TH>장소</TH>
-      <TD><input type="text" name="restate"></TD>
+      <TD><input type="text" name="restate" value="${dto.restate }"></TD>
     </TR>
     <TR>
       <TH>인원</TH>
-      <TD><input type="text" name="retimnum"></TD>
+      <TD><input type="text" name="retimnum" value="${dto.retimnum }"></TD>
     </TR>
   </TABLE>  
   <DIV class='bottom'>
     <input type='submit' value='등록'>
-    <input type='button' value='취소' onclick="history.back()'">
+    <input type='button' value='취소' onclick="history.back()">
   </DIV>
 </FORM>
 </body>
