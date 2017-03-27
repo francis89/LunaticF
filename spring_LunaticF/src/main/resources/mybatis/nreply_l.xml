@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nreply_l">
+
+	<select id="rcount" parameterType="int" resultType="int">
+		SELECT count(*) FROM nreply_l
+		WHERE noticeno = #{noticeno}
+	</select>
+
+	<delete id="bdelete" parameterType="int">
+		DELETE FROM nreply_l
+		WHERE
+		noticeno = #{noticeno}
+	</delete>
+
+	<select id="total" resultType="int" parameterType="int">
+		SELECT COUNT(*) 
+		FROM nreply_l
+		WHERE noticeno = #{noticeno}
+	</select>
+
+	<insert id="create" parameterType="Nreply_lDTO">
+		INSERT INTO nreply_l(nreplyno, noticeno, nrcontent, nrdate, id)
+		VALUES((SELECT NVL(MAX(nreplyno), 0) + 1 as nreplyno FROM nreply_l),
+				#{noticeno}, #{nrcontent}, sysdate,	#{id})
+	</insert>
+
+	<update id="update" parameterType="Nreply_lDTO">
+		UPDATE nreply_l
+		SET
+		nrcontent=#{nrcontent}
+		WHERE nreplyno = #{nreplyno}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM nreply_l
+		WHERE
+		nreplyno = #{nreplyno}
+	</delete>
+
+
+	<select id="list" resultType="Nreply_lDTO" parameterType="Map">
+		SELECT nreplyno, noticeno, nrcontent, nrdate, id, r
+		FROM(
+			SELECT nreplyno, noticeno, nrcontent, nrdate, id, rownum r
+			FROM(
+				SELECT nreplyno, noticeno, nrcontent, nrdate, id
+				FROM nreply_l
+				WHERE noticeno = #{noticeno}
+				ORDER BY nreplyno DESC
+				)
+			)                                                                          
+   <![CDATA[                                                                        
+   where r>=#{sno} and r<=#{eno}  
+   ]]>
+	</select>
+
+	<select id="read" resultType="Nreply_lDTO" parameterType="int">
+		SELECT
+		*
+		FROM nreply_l
+		WHERE nreplyno = #{nreplyno}
+	</select>
+
+</mapper>

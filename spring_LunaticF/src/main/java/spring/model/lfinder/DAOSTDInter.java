@@ -10,9 +10,9 @@ public interface DAOSTDInter {
 
 	public Object read(Object pk) throws Exception;
 
-	public boolean update(Object dto) throws Exception;
+	public boolean update(Object pk) throws Exception;
 
-	public boolean delete(Object pk) throws Exception;
+	public boolean delete(Object dto) throws Exception;
 
 	public int total(Map map) throws Exception;
 

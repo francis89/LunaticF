@@ -1,0 +1,8 @@
+{
+"DESCRIPTION" : {"USETGTINFO":"서비스대상","SVCID":"서비스ID","RCPTBGNDT":"접수시작일시","GUBUN":"서비스구분","SVCSTATNM":"서비스상태","SVCURL":"바로가기URL","SVCNM":"서비스명","AREANM":"지역명","PAYATNM":"결제방법","SVCOPNENDDT":"서비스개시종료일시","SVCOPNBGNDT":"서비스개시시작일시","PLACENM":"장소명","MAXCLASSNM":"대분류명","Y":"장소Y좌표","X":"장소X좌표","RCPTENDDT":"접수종료일시","MINCLASSNM":"소분류명"},
+"DATA" : [
+{"USETGTINFO":"제한없음","SVCID":"S161213075823690351","RCPTBGNDT":1487552400000,"GUBUN":"자체","SVCSTATNM":"접수종료","SVCURL":"http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S161213075823690351","SVCNM":"신월 야구장( 선착순)","AREANM":"양천구","PAYATNM":"유료(요금안내문의)","SVCOPNENDDT":1514646000000,"SVCOPNBGNDT":1483196400000,"PLACENM":"신월야구공원>야구장","MAXCLASSNM":"체육시설","Y":null,"X":null,"RCPTENDDT":1487574000000,"MINCLASSNM":"야구장"},
+{"USETGTINFO":"제한없음","SVCID":"S161213073958061987","RCPTBGNDT":1488420000000,"GUBUN":"자체","SVCSTATNM":"접수중","SVCURL":"http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S161213073958061987","SVCNM":"신월 야구장(주간, 야간)","AREANM":"양천구","PAYATNM":"유료(요금안내문의)","SVCOPNENDDT":1514646000000,"SVCOPNBGNDT":1483196400000,"PLACENM":"신월야구공원>야구장","MAXCLASSNM":"체육시설","Y":null,"X":null,"RCPTENDDT":1489050000000,"MINCLASSNM":"야구장"},
+{"USETGTINFO":"제한없음","SVCID":"S150102102836766339","RCPTBGNDT":1488765600000,"GUBUN":"자체","SVCSTATNM":"안내중","SVCURL":"http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S150102102836766339","SVCNM":"목동다목적경기장  평일/주말(공휴일), 주간/야간","AREANM":"양천구","PAYATNM":"유료(요금안내문의)","SVCOPNENDDT":1493478000000,"SVCOPNBGNDT":1488294000000,"PLACENM":"목동운동장>다목적구장","MAXCLASSNM":"체육시설","Y":null,"X":null,"RCPTENDDT":1490950800000,"MINCLASSNM":"다목적경기장"}
+]
+}

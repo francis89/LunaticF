@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice_l">
+
+	<update id="update" parameterType="Notice_lDTO">
+		UPDATE notice_l
+		SET
+		ntitle=#{ntitle}, ncontent=#{ncontent}
+		WHERE noticeno = #{noticeno}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM notice_l
+		WHERE
+		noticeno = #{noticeno}
+	</delete>
+	
+	<insert id="create" parameterType="Notice_lDTO">
+		INSERT INTO notice_l(noticeno,
+		ntitle, ncontent, ndate, id)
+		VALUES((SELECT NVL(MAX(noticeno), 0) + 1 as
+		noticeno FROM notice_l),
+		#{ntitle}, #{ncontent}, sysdate, #{id})
+	</insert>
+	
+	<select id="list" resultType="Notice_lDTO" parameterType="Map">
+		SELECT noticeno, ntitle, ncontent, ndate, nviewcnt,id, r 
+		FROM( 
+		    SELECT noticeno, ntitle, ncontent, ndate, nviewcnt,id, rownum r    
+		      FROM(
+		            SELECT noticeno, ntitle, ncontent, ndate,nviewcnt,id 
+		            FROM notice_l 
+		<where>
+			<choose>
+				<when test="col=='ntitle'">
+					ntitle like '%'||#{word}||'%'
+				</when>
+				<when test="col=='ncontent'">
+					ncontent like '%'||#{word}||'%'
+				</when>
+				<when test="col=='ndate'">
+					ndate like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+		ORDER BY noticeno DESC
+		)
+		)                                                                            
+   <![CDATA[                                                                        
+   where r>=#{sno} and r<=#{eno}  
+   ]]>
+	</select>
+	
+	<select id="read" resultType="Notice_lDTO" parameterType="int">
+		SELECT *
+		FROM notice_l
+		WHERE noticeno = #{noticeno}
+	</select>
+	
+	<select id="total" resultType="int" parameterType="Map">
+		SELECT COUNT(*) FROM notice_l
+		<where>
+			<choose>
+				<when test="col=='ntitle'">
+					ntitle like '%'||#{word}||'%'
+				</when>
+				<when test="col=='ncontent'">
+					ncontent like '%'||#{word}||'%'
+				</when>
+				<when test="col=='ndate'">
+					ndate like '%'||#{word}||'%'
+				</when>
+			</choose>
+		</where>
+	</select>
+
+	<update id="upViewcnt" parameterType="int">
+		UPDATE notice_l
+		SET nviewcnt
+		= nviewcnt +1
+		WHERE noticeno = #{noticeno}
+	</update>
+</mapper>

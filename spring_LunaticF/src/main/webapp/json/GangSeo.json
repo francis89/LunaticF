@@ -1,0 +1,7 @@
+{
+"DESCRIPTION" : {"USETGTINFO":"서비스대상","SVCID":"서비스ID","RCPTBGNDT":"접수시작일시","GUBUN":"서비스구분","SVCSTATNM":"서비스상태","SVCURL":"바로가기URL","SVCNM":"서비스명","AREANM":"지역명","PAYATNM":"결제방법","SVCOPNENDDT":"서비스개시종료일시","SVCOPNBGNDT":"서비스개시시작일시","PLACENM":"장소명","MAXCLASSNM":"대분류명","Y":"장소Y좌표","X":"장소X좌표","RCPTENDDT":"접수종료일시","MINCLASSNM":"소분류명"},
+"DATA" : [
+{"USETGTINFO":"제한없음","SVCID":"S161125132114068271","RCPTBGNDT":1480518000000,"GUBUN":"자체","SVCSTATNM":"접수중","SVCURL":"http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S161125132114068271","SVCNM":"2017년 족구장2-강서","AREANM":"강서구","PAYATNM":"유료","SVCOPNENDDT":1514646000000,"SVCOPNBGNDT":1480518000000,"PLACENM":"강서한강공원>족구장(7,8번)","MAXCLASSNM":"체육시설","Y":null,"X":null,"RCPTENDDT":1514646000000,"MINCLASSNM":"족구장"},
+{"USETGTINFO":"제한없음","SVCID":"S161125132113794655","RCPTBGNDT":1480518000000,"GUBUN":"자체","SVCSTATNM":"접수중","SVCURL":"http://yeyak.seoul.go.kr/reservation/view.web?rsvsvcid=S161125132113794655","SVCNM":"2017년 족구장1-강서","AREANM":"강서구","PAYATNM":"유료","SVCOPNENDDT":1514646000000,"SVCOPNBGNDT":1480518000000,"PLACENM":"강서한강공원>족구장(7,8번)","MAXCLASSNM":"체육시설","Y":null,"X":null,"RCPTENDDT":1514646000000,"MINCLASSNM":"족구장"}
+]
+}

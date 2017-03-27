@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE  tiles-definitions PUBLIC 
+    "-//Aapche Software Foundation//DTD Tiles Configuration 2.0//EN" 
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+
+<tiles-definitions> 
+
+    <definition name="/sharebbs_l/list" extends="main"> 
+        <put-attribute name="title" value="게시판 목록" ></put-attribute> 
+        <put-attribute name="body" 	value="/WEB-INF/views/sharebbs_l/list.jsp" /> 
+    </definition>
+
+    <definition name="/sharebbs_l/create" extends="main"> 
+        <put-attribute name="title" value="게시판 생성" ></put-attribute> 
+        <put-attribute name="body" 	value="/WEB-INF/views/sharebbs_l/createForm.jsp" /> 
+    </definition>
+       
+    <definition name="/sharebbs_l/read" extends="main"> 
+        <put-attribute name="title" value="게시판 조회" ></put-attribute> 
+        <put-attribute name="body" 	value="/WEB-INF/views/sharebbs_l/read.jsp" /> 
+    </definition>      
+      
+    <definition name="/sharebbs_l/delete" extends="main"> 
+        <put-attribute name="title" value="글 삭제" ></put-attribute> 
+        <put-attribute name="body" 	value="/WEB-INF/views/sharebbs_l/deleteForm.jsp" /> 
+    </definition>  
+
+    <definition name="/sharebbs_l/update" extends="main"> 
+        <put-attribute name="title" value="글 수정" ></put-attribute> 
+        <put-attribute name="body" 	value="/WEB-INF/views/sharebbs_l/updateForm.jsp" /> 
+    </definition>  
+
+</tiles-definitions> 
