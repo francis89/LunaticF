@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <script type="text/javascript">
-
 function incheck(f) {
 
 	if(f.ntitle.value==""){
@@ -14,12 +13,6 @@ function incheck(f) {
 		f.ntitle.focus();
 		return false;
 	}
-// 	if(f.content.value==""){
-// 		alert("내용을 입력하세요");
-// 		f.content.focus();
-// 		return false;
-// 	}
-// content: textarea name
     if (CKEDITOR.instances['ncontent'].getData() == '') {
       window.alert('내용을 입력해 주세요.');
       CKEDITOR.instances['ncontent'].focus();
@@ -34,44 +27,38 @@ function incheck(f) {
      CKEDITOR.replace('ncontent');  // <TEXTAREA>태그 id 값
   };
  </script> 
-<link href="${pageContext.request.contextPath }/css/style.css" rel="Stylesheet" type="text/css">
 </head> 
-<!-- *********************************************** -->
 <body>
-<!-- *********************************************** -->
- 
-<DIV class="title">등록</DIV>
- 
-<FORM name='frm' 
-	  method='POST' 
-	  action='./create' 
-	  onsubmit="return incheck(this)"
-	  enctype="multipart/form-data">
-	  <input type="hidden" name="id" value="${sessionScope.id }">
-  <TABLE>
-
-    <TR>
-      <TH>제목</TH>
-      <TD><input type="text" name="ntitle" size="40"></TD>
-    </TR>
-    <TR>
-      <TH>내용</TH>
-      <TD>
-		<textarea rows="10" cols="60" name="ncontent"></textarea>
-      </TD>
-    </TR>
-
-
-  </TABLE>
-  
-  <DIV class='bottom'>
-    <input type='submit' value='등록' >
-    <input type='button' value='취소' onclick="history.back()">
-  </DIV>
-</FORM>
- 
- 
-<!-- *********************************************** -->
+	 
+	<h2 style="text-align: center;">등록</h2>
+	<div class=container>
+		<FORM name='frm' 
+			  method='POST' 
+			  action='./create' 
+			  onsubmit="return incheck(this)"
+			  enctype="multipart/form-data">
+			  <input type="hidden" name="id" value="${sessionScope.id }">
+				<div class="table-responsive">
+				  <table class="table">
+				    <tr>
+				      <th>제목</th>
+				      <td><input type="text" name="ntitle" size="40"></td>
+				    </tr>
+				    <tr>
+				      <th>내용</th>
+				      <td>
+						<textarea rows="10" cols="60" name="ncontent"></textarea>
+				      </td>
+				    </tr>
+				  </table>
+				</div>
+	
+				  <DIV class='bottom' style="text-align: center;">
+				    <input type='submit' value='등록' >
+				    <input type='button' value='취소' onclick="history.back()">
+				  </DIV>
+		</FORM>
+	</div>
+	 
 </body>
-<!-- *********************************************** -->
 </html> 
