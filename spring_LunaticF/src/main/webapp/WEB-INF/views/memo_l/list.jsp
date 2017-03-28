@@ -11,12 +11,6 @@
 <head> 
 <meta charset="UTF-8"> 
 <title></title> 
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 24px; 
-} 
-</style>
 <script type="text/javascript">
 function mcreate(){
 	var url = "create";
@@ -50,74 +44,78 @@ function mcreate(){
 	}
 
 </script> 
-<link href="${pageContext.request.contextPath }/css/style2.css" rel="Stylesheet" type="text/css">
 </head> 
 <body> 
 
-<div class="title">
-메모목록
+<h2 style="text-align: center;">메모장</h2>
+
+ <div class="search" style="text-align: center;"> 
+	  <FORM method='post' action="./list"> 
+	  <SELECT name='col'> <!-- 검색할 컬럼 -->
+	    <OPTION value='title' <c:if test="${col=='mtitle'}">selected='selected'</c:if> >
+	   			제 목</OPTION> 
+	    <OPTION value='content' <c:if test="${col=='mcontent'}">selected='selected'</c:if> >
+	    		내 용</OPTION> 
+	    <OPTION value='total'>전체출력</OPTION> 
+	  </SELECT> 
+	  <input type='text' name='word' value='${word}'> <!-- 검색어 -->
+	  <input type='submit' value='검색'> 
+	  <input type='button' value='등록' onclick="location.href='./create'">
+	  </FORM> 
 </div>
- <DIV class="search" align=center> 
-  <FORM method='post' action="./list"> 
-  <SELECT name='col'> <!-- 검색할 컬럼 -->
-    <OPTION value='title'  
-    <c:if test="${col=='mtitle'}">selected='selected'</c:if>
-    >제 목</OPTION> 
-    <OPTION value='content' <c:if test="${col=='mcontent'}">selected='selected'</c:if>
-    >내 용</OPTION> 
-    <OPTION value='total'>전체출력</OPTION> 
-  </SELECT> 
-  <input type='text' name='word' value='${word}'> <!-- 검색어 -->
-  <input type='submit' value='검색'> 
-  <input type='button' value='등록' onclick="location.href='./create'">
-  </FORM> 
-</DIV>
-<div class='t3'> 
-<table>
-<tr>
-<th class="ty2">번호</th>
-<th class="ty2">제목</th>
-<th class="ty2">내용</th>
-<th class="ty2">날짜</th>
-<th class="ty2">닉네임</th>
-<th class="ty2">조회수</th>
-<th class="ty2">수정/삭제</th>
-
-</tr>
-<c:choose>
-<c:when test="${fn:length(list)==0 }">
-<tr>
-	<td colspan='4'>등록된 메모가 없습니다.</td>
-</tr>
-</c:when>
-<c:otherwise>
-	<c:forEach items="${list}" var="dto">
-
-    <tr>
-      <td class='ty1'>${dto.memono}</td>         
-      <td class='ty1'>${dto.mtitle}
-      <c:if test="${util:newImg(fn:substring(dto.mdate,0,10))}">
-      <img src="${pageContext.request.contextPath}/images/new.gif">
-      </c:if> 
-      </td>
-      <td class='ty1'>${dto.mcontent}</td>         
-      <td class='ty1'>${dto.mdate}</td>
-      <td class='ty1'>${dto.mnick}</td>
-      <td class='ty1'>${dto.mviewcnt}</td>
-      <td class='ty1'><input type="button" value="수정" onclick="mupdate('${dto.memono}')">
- 					  <input type="button" value="삭제" onclick="mdelete('${dto.memono}')">
- 					  </td>
-      
-    </tr>
-    
- 	</c:forEach>
-</c:otherwise>
-</c:choose>
-</table>
+<div class="container"> 
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>내용</th>
+					<th>날짜</th>
+					<th>닉네임</th>
+					<th>조회수</th>
+					<th>수정/삭제</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<c:choose>
+					<c:when test="${fn:length(list)==0 }">
+						<tr>
+							<td colspan='4'>등록된 메모가 없습니다.</td>
+						</tr>
+					</c:when>
+					
+					<c:otherwise>
+						<c:forEach items="${list}" var="dto">
+					
+					    <tr>
+					      <td>${dto.memono}</td>         
+					      <td>${dto.mtitle}
+						      <c:if test="${util:newImg(fn:substring(dto.mdate,0,10))}">
+						      	<img src="${pageContext.request.contextPath}/images/new.gif">
+						      </c:if> 
+					      </td>
+					      <td>${dto.mcontent}</td>         
+					      <td>${dto.mdate}</td>
+					      <td>${dto.mnick}</td>
+					      <td>${dto.mviewcnt}</td>
+					      <td>
+					      	<input type="button" value="수정" onclick="mupdate('${dto.memono}')">
+							<input type="button" value="삭제" onclick="mdelete('${dto.memono}')">
+					 	  </td>
+					    </tr>
+					    
+					 	</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</tbody>
+		</table>
+	</div>
 </div>
 
 
-<div class="bottom">
+<div class="bottom" style="text-align: center;">
 ${paging}
 <input type="button" value="등록" onclick="location.href='./create'">
 </div>
