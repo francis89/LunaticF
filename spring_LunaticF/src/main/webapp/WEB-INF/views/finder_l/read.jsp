@@ -26,38 +26,34 @@ function response(result,textStatus){
 	
 	var i = ${i};
 	$("#panel").append(
-				"<TR>"+
-	                "<TH>서비스명</TH>"+
-	                "<TD>"+result.DATA[i].SVCNM+"</TD>"+
-                "</TR>"+
-                "<TR>"+
-                	"<TH>소분류명</TH>"+
-                	"<TD>"+result.DATA[i].MINCLASSNM+"</TD>"+
-                "</TR>"+
-                "<TR>"+
-	                "<TH>장소명</TH>"+
-	                "<TD>"+result.DATA[i].PLACENM+"</TD>"+
-                "</TR>"+
-                "<TR>"+
-                	"<TH>예약상태</TH>"+
-                	"<TD>"+result.DATA[i].SVCSTATNM+"</TD>"+
-                "</TR>"+
-                "<TR>"+
-                	"<TH>접수종료일시</TH>"+
-               		"<TD>"+result.DATA[i].RCPTENDDT+"</TD>"+
-                "</TR>"+
-               	"<TR>"+
-	                "<TH>대상</TH>"+
-	                "<TD>"+result.DATA[i].USETGTINFO+"</TD>"+
-	            "</TR>"+
-                "<TR>"+
-	                "<TH>서비스 상태</TH>"+
-	                "<TD>"+result.DATA[i].SVCSTATNM+"</TD>"+
-	            "</TR>"+
-                "<TR>"+
-	                "<TH>URL</TH>"+
-	                "<TD><a href='"+result.DATA[i].SVCURL+"'>"+result.DATA[i].SVCURL+"</a></TD>"+
-	            "</TR>"
+				"<tr>"+
+	                "<th>서비스명</th>"+
+	                "<td>"+result.DATA[i].SVCNM+"</td>"+
+                "</tr>"+
+                "<tr>"+
+                	"<th>소분류명</th>"+
+                	"<td>"+result.DATA[i].MINCLASSNM+"</td>"+
+                "</tr>"+
+                "<tr>"+
+	                "<th>장소명</th>"+
+	                "<td>"+result.DATA[i].PLACENM+"</td>"+
+                "</tr>"+
+                "<tr>"+
+                	"<th>접수종료일시</th>"+
+               		"<td>"+result.DATA[i].RCPTENDDT+"</td>"+
+                "</tr>"+
+               	"<tr>"+
+	                "<th>대상</th>"+
+	                "<td>"+result.DATA[i].USETGTINFO+"</td>"+
+	            "</tr>"+
+                "<tr>"+
+	                "<th>서비스 상태</th>"+
+	                "<td>"+result.DATA[i].SVCSTATNM+"</td>"+
+	            "</tr>"+
+                "<tr>"+
+	                "<th>URL</th>"+
+	                "<td><a href='"+result.DATA[i].SVCURL+"'>"+result.DATA[i].SVCURL+"</a></td>"+
+	            "</tr>"
             ); 
 	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -101,14 +97,18 @@ function response(result,textStatus){
 </head>
 
 <body>
-<table id="panel">
-<tr>
-		<td  colspan="2" align="center">
-		
-		<div id="map" style="width:400px;height:350px;"></div>
-		
-		</td>
-</tr>
-</table>
+<div class="container">
+	<div class="table-responsive">
+		<table id="panel" class="table">
+			<tr>
+					<td  colspan="2" align="center">
+					
+					<div id="map" style="width:400px;height:350px;"></div>
+					
+					</td>
+			</tr>
+		</table>
+	</div>
+</div>
 </body>
 </html>

@@ -97,78 +97,81 @@ function idCheck(id){
 	}
 }
 </script> 
-<link href="${pageContext.request.contextPath }/css/style.css" rel="Stylesheet" type="text/css">
 </head> 
 <!-- *********************************************** -->
 <body>
 <!-- *********************************************** -->
  
-<DIV class="title">회원가입</DIV>
- 
-<FORM name='frm' 
+<h2>회원가입</h2> 
+<div class="container">
+
+<form name='frm' 
 	  method='POST' 
 	  action='./create'
 	  enctype="multipart/form-data"
 	  onsubmit="return inputCheck(this)">
-  <TABLE>
+	  <div class="table-responsive">
+	  
+  <table class="table">
     
-    <TR>
-      <TH>*아이디</TH>
-      <TD>
-      	<input type="text" name="id" size="15">
+    <tr>
+      <th>*아이디</th>
+      <td>
+      	<input type="text" name="id" size="15"placeholder="ID">
       	<input type="button" value="ID중복확인" 
       	       onclick="idCheck(document.frm.id.value)">
-      </TD>
-      <TD>아이디를 적어주세요.</TD>
-    </TR>
+      </td>
+      <td>아이디를 적어주세요.</td>
+    </tr>
     
-    <TR>
-      <TH>*패스워드</TH>
-      <TD><input type="password" name="passwd" size="15"></TD>
-      <TD> 패스워드를 적어주세요 </TD>
-    </TR>
-    <TR>
-      <TH>*패스워드확인</TH>
-      <TD><input type="password" name="repasswd" size="15"></TD>
-      <TD> 패스워드를 확인합니다 </TD>
-    </TR>
-    <TR>
-      <TH>*이름</TH>
-      <TD><input type="text" name="username" size="15"></TD>
-      <TD> 실명을 적어주세요 </TD>
-    </TR>
-	<TR>
-      <TH>전화번호</TH>
-      <TD><input type="text" name="tel" size="15"></TD>
-      <TD> 전화번호를 적어주세요 </TD>
-    </TR>    
+    <tr>
+      <th>*패스워드</th>
+      <td><input type="password" name="passwd" size="15"></td>
+      <td> 패스워드를 적어주세요 </td>
+    </tr>
+    <tr>
+      <th>*패스워드확인</th>
+      <td><input type="password" name="repasswd" size="15" ></td>
+      <td> 패스워드를 확인합니다 </td>
+    </tr>
+    <tr>
+      <th>*이름</th>
+      <td><input type="text" name="username" size="15" placeholder="이름"></td>
+      <td> 실명을 적어주세요 </td>
+    </tr>
+	<tr>
+      <th>연락처</th>
+      <td><input type="text" name="tel" size="15"placeholder="연락처"></td>
+      <td> 연락처를 적어주세요 </td>
+    </tr>    
     
-    <TR>
-      <TH>우편번호</TH>
-      <TD>
+    <tr>
+      <th>우편번호</th>
+      <td>
       <input type="text" name="zipcode" size="7" maxlength="6" id="sample6_postcode" placeholder="우편번호">
 	  <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 검색">
-      </TD>
-      <TD> 우편번호를 검색해주세요 </TD>
-    </TR>
+      </td>
+      <td> 우편번호를 검색해주세요 </td>
+    </tr>
 
-    <TR>
-      <TH>주소</TH>
-      <TD>
+    <tr>
+      <th>주소</th>
+      <td>
       <input type="text" name="address1" size="40" id="sample6_address" placeholder="주소"> 
       <input type="text" name="address2" size="40" id="sample6_address2" placeholder="상세주소">
-      </TD>
-      <TD> 주소를 입력해주세요 </TD>
-    </TR>
+      </td>
+      <td> 주소를 입력해주세요 </td>
+    </tr>
     
     
-  </TABLE>
-  
-  <DIV class='bottom'>
+  </table>
+  </div>
+  <div class='bottom'>
     <input type='submit' value='회원가입'>
     <input type='button' value='취소' onclick="history.back()">
-  </DIV>
-</FORM>
+  </div>
+</form>
+  </div>
  
  
 <!-- *********************************************** -->
