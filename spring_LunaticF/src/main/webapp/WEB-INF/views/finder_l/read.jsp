@@ -56,6 +56,11 @@ function response(result,textStatus){
 	            "</tr>"
             ); 
 	
+	if(result.DATA[i].X==null || result.DATA[i].Y==null){
+		result.DATA[i].X = 37.5694802;
+		result.DATA[i].Y = 126.9859787;
+	}
+	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = { 
 	    center: new daum.maps.LatLng(result.DATA[i].X, result.DATA[i].Y), // 지도의 중심좌표
