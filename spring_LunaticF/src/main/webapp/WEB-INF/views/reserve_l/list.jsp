@@ -37,21 +37,21 @@ function idcheck(button) {
 </script>
 </head>
 <body>
-	<DIV class="search"> 
-	  <FORM method='post' action="./list"> 
-		  <SELECT name='col'> <!-- 검색할 컬럼 -->
-		    <OPTION value='retitle' <c:if test="${col=='retitle'}">selected='selected'</c:if>>제 목</OPTION> 
-		    <OPTION value='restate' <c:if test="${col=='restate'}">selected='selected'</c:if>>장 소</OPTION> 
-		    <OPTION value='id' <c:if test="${col=='id'}">selected='selected'</c:if>>아이디</OPTION> 
-		    <OPTION value='total'>전체출력</OPTION> 
-		  </SELECT> 
-		  <input type='text' name='word' value='${word}'> <!-- 검색어 -->
-		  <input type='submit' value='검색' class="button_mini" >
-	  </FORM> 
-	</DIV> 
 	 
 	 <div class="container">
-		<h2 style="text-align: center;">예약 게시판 목록 </h2>
+			<h2 style="text-align: center;">예약 게시판 목록 </h2>
+			<div style="text-align: center;">
+			  <FORM method='post' action="./list"> 
+				  <SELECT name='col'> <!-- 검색할 컬럼 -->
+				    <OPTION value='retitle' <c:if test="${col=='retitle'}">selected='selected'</c:if>>제 목</OPTION> 
+				    <OPTION value='restate' <c:if test="${col=='restate'}">selected='selected'</c:if>>장 소</OPTION> 
+				    <OPTION value='id' <c:if test="${col=='id'}">selected='selected'</c:if>>아이디</OPTION> 
+				    <OPTION value='total'>전체출력</OPTION> 
+				  </SELECT> 
+				  <input type='text' name='word' value='${word}'> <!-- 검색어 -->
+				  <input type='submit' value='검색' class="button_mini" >
+			  </FORM> 
+			</div>
 			<div class="table-responsive">
 				<table class="table">
 					<thead>

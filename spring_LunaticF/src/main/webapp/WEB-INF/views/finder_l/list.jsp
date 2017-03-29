@@ -30,7 +30,7 @@ function response(result, textStatus) {
 	var size = result.DATA.length;
 	var i = 0;
 	//alert(ida);
-	var str = str + "<table class='table'>";
+	var str = "<table class='table'>";
 	str += "<thead><tr>";
 	str += "<th>번호</th>";
 	str += "<th>분류</th>";
@@ -60,7 +60,13 @@ function response(result, textStatus) {
 <div class="container">
 	<div class="table-responsive">  
 		<table class="table">
-			<thead><tr><th><th><th><th><th></tr></thead>
+			<thead>
+				<tr>
+					<th colspan="5">
+						<h2  style="text-align: center;">AREA LIST</h2>
+					</th>
+				</tr>
+			</thead>
 			<tbody>
 				<tr>
 					<td id="GangNam(default)" onmousedown='jsonOpen(this)'>강남구</td>
@@ -100,7 +106,6 @@ function response(result, textStatus) {
 			</tbody>
 		</table>
 	</div>
-	<div class="table-responsive"></div>
 	<div id='div1'></div><br>
 </div>
 </body>

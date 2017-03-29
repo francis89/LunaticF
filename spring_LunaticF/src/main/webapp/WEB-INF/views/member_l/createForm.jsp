@@ -49,12 +49,7 @@
         }).open();
     }
 </script> 
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-} 
-</style>
+
 <script type="text/javascript">
 function inputCheck(f){
 	if(f.id.value==""){
@@ -102,7 +97,7 @@ function idCheck(id){
 <body>
 <!-- *********************************************** -->
  
-<h2>회원가입</h2> 
+<h2 style="text-align: center;">회원가입</h2> 
 <div class="container">
 
 <form name='frm' 

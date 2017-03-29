@@ -5,10 +5,17 @@
 	<title>Home</title>
 </head>
 <body>
-<h1>
-	되냐??? 
-</h1>
+	<img src="${pageContext.request.contextPath }/images/mainm.jpg" style="width: 100%; height: 100%; padding: 0; ">
+	<h1 style="text-align: center; color: #0080FF;">
+		<c:choose>
+			<c:when test="${empty sessionScope.id }">
+				어서오세요 L Finder 오신것을 환영합니다.
+			</c:when>
+			<c:otherwise>
+				어서오세요   ${sessionScope.id } 님!!
+			</c:otherwise>
+		</c:choose>
+	</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

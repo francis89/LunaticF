@@ -7,17 +7,9 @@
 <head> 
 <meta charset="UTF-8"> 
 <title></title> 
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-} 
-</style> 
 
 </head> 
-<!-- *********************************************** -->
 <body>
-<!-- *********************************************** -->
  
 <h2 style="text-align: center;">Log In</h2>
  <div class="container" >
