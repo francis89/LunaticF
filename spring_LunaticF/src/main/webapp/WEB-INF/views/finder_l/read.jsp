@@ -113,6 +113,9 @@ function response(result,textStatus){
 					</td>
 			</tr>
 		</table>
+		<DIV class="bottom"  style="text-align: center;">
+			<input type='button' value='목록으로' class="button" onclick="history.back()">
+		</DIV>
 	</div>
 </div>
 </body>
