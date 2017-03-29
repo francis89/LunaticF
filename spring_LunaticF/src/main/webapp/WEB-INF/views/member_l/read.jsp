@@ -90,12 +90,11 @@ function updatePw(){
     <c:choose>
     	<c:when test="${not empty id && grade == 'A' }">
     		<input type='button' value='회원목록' onclick="mlist()">
-    		<input type='button' value='계정삭제' onclick="deleteId()"> 	
     	</c:when>
-    	<c:otherwise>
+    	<c:when test="${not empty id }">
    			 <input type='button' value='패스워드 수정' onclick="updatePw()">
     		<input type='button' value='계정삭제' onclick="deleteId()"> 	
-    	</c:otherwise>
+    	</c:when>
     </c:choose>
   
   </DIV>

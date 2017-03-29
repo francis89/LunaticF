@@ -17,33 +17,31 @@ function read(id){
 	location.href = url;
 }
 
-</script> 
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-} 
+</script>
+<style type="text/css">
+TD{
+	width: 55%;
+	text-align: left;
+}
 </style> 
 </head> 
-<!-- *********************************************** -->
 <body>
-<!-- *********************************************** -->
  
 <h2 style="text-align: center;">회원 목록</h2>
- <div class="search">
-<form name='frm' method='POST' action='./list'>
-<SELECT name="col">
-	<option value="username" 
-		<c:if test="${col=='username'}"> selected='selected' </c:if>>Name</option>
-	<option value="tel"
-		<c:if test="${col=='tel'}"> selected='selected' </c:if>>Tel</option>
-	<option value="id"
-		<c:if test="${col=='id'}"> selected='selected' </c:if>>I   D</option>
-	<option value="total">전체출력</option>
-</SELECT>
-<input type="text" name="word" value='${word }'>
-<input type="submit" value="검색">
-</form>
+ <div style="text-align: center;">
+	<form name='frm' method='POST' action='./list'>
+	<SELECT name="col">
+		<option value="username" 
+			<c:if test="${col=='username'}"> selected='selected' </c:if>>Name</option>
+		<option value="tel"
+			<c:if test="${col=='tel'}"> selected='selected' </c:if>>Tel</option>
+		<option value="id"
+			<c:if test="${col=='id'}"> selected='selected' </c:if>>I   D</option>
+		<option value="total">전체출력</option>
+	</SELECT>
+	<input type="text" name="word" value='${word }'>
+	<input type="submit" value="검색">
+	</form>
  </div>
  <div class="container">
 	<div class="table-responsive">
@@ -51,25 +49,21 @@ function read(id){
 		  <table class="table">
 		    <tr>
 		      <th>I D</th>
-		      <TD style="text-align: left;">
-		      <a href="javascript:read('${dto.id }')">
-				${dto.id }
-		      </a>
-		      </TD>
+		      <TD><a href="javascript:read('${dto.id }')">${dto.id }</a></TD>
 		    </tr>
 		    <tr>
 		      <th>Name</th>
-		      <TD style="text-align: left;">${dto.username }</TD>
+		      <TD>${dto.username }</TD>
 		    </tr>
 		    <tr>
 		      <th>전화번호</th>
-		      <TD style="text-align: left;">${dto.tel }</TD>
+		      <TD>${dto.tel }</TD>
 		    </tr>
 		    <tr>
 		      <th>주소</th>
-		      <TD style="text-align: left;">
-		      ${dto.address1 }
-		      ${dto.address2 }
+		      <TD>
+			      ${dto.address1 }
+			      ${dto.address2 }
 		      </TD>
 		    </tr>
 		  </table>
