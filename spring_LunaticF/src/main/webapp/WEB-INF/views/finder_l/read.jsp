@@ -26,6 +26,14 @@ function response(result,textStatus){
 	
 	var i = ${i};
 	$("#panel").append(
+                "<tr>"+
+	                "<th>구역 </th>"+
+	                "<td>"+result.DATA[i].AREANM+"</td>"+
+	            "</tr>"+
+                "<tr>"+
+	                "<th>장소명</th>"+
+	                "<td>"+result.DATA[i].PLACENM+"</td>"+
+                "</tr>"+
 				"<tr>"+
 	                "<th>서비스명</th>"+
 	                "<td>"+result.DATA[i].SVCNM+"</td>"+
@@ -33,10 +41,6 @@ function response(result,textStatus){
                 "<tr>"+
                 	"<th>소분류명</th>"+
                 	"<td>"+result.DATA[i].MINCLASSNM+"</td>"+
-                "</tr>"+
-                "<tr>"+
-	                "<th>장소명</th>"+
-	                "<td>"+result.DATA[i].PLACENM+"</td>"+
                 "</tr>"+
                 "<tr>"+
                 	"<th>접수종료일시</th>"+
