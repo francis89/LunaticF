@@ -7,9 +7,7 @@
 	<script type="text/javascript" src="../json/jquery.js"></script>
 	<script type="text/javascript"
     src="//apis.daum.net/maps/maps3.js?apikey=da246ae8b7c6b06cd80ebdbcac2b98ce&libraries=services"></script>
-
 <script type="text/javascript">
-
 $(document).ready(function() {
     $.getJSON(
       "../json/${ida}.json",
@@ -60,47 +58,47 @@ function response(result,textStatus){
 	            "</TR>"
             ); 
 	
-	if(result.DATA[i].X==null || result.DATA[i].Y==null){
-		result.DATA[i].X = 37.5694802;
-		result.DATA[i].Y = 126.9859787;
-	}
-	
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = { 
 	    center: new daum.maps.LatLng(result.DATA[i].X, result.DATA[i].Y), // 지도의 중심좌표
 	    level: 3 // 지도의 확대 레벨
 	};
+
 	//default x:37.5691675 y:126.9846888 종로 코아빌딩
-	var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-	// 마커가 표시될 위치입니다 
-	var markerPosition  = new daum.maps.LatLng(result.DATA[i].X, result.DATA[i].Y); 
-
-	// 마커를 생성합니다
-	var marker = new daum.maps.Marker({
-	position: markerPosition
-	});
-
-	// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
-
-	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-	// marker.setMap(null);    
-	var iwContent = '<div style="font-size: 2px;">'+result.DATA[i].SVCNM+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-	iwPosition = new daum.maps.LatLng(result.DATA[i].X, result.DATA[i].Y); //인포윈도우 표시 위치입니다
-
-	// 인포윈도우를 생성합니다
-	var infowindow = new daum.maps.InfoWindow({
-	position : iwPosition, 
-	content : iwContent 
-	});
-
-	// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-	infowindow.open(map, marker); 
-		
+	if(result.DATA[i].X==null || result.DATA[i].Y==null){
+		/* result.DATA[i].X = 37.5694802;
+		result.DATA[i].Y = 126.9859787; */
+		$("#map").append(
+				"<img src='${pageContext.request.contextPath}/images/default.jpg' style='width:400px;height:350px;'>"
+				);
+	} else {
+		var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		// 마커가 표시될 위치입니다 
+		var markerPosition  = new daum.maps.LatLng(result.DATA[i].X, result.DATA[i].Y); 
+	
+		// 마커를 생성합니다
+		var marker = new daum.maps.Marker({
+		position: markerPosition
+		});
+	
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+	
+		// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+		// marker.setMap(null);    
+		var iwContent = '<div style="font-size: 2px;">'+result.DATA[i].SVCNM+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		iwPosition = new daum.maps.LatLng(result.DATA[i].X, result.DATA[i].Y); //인포윈도우 표시 위치입니다
+	
+		// 인포윈도우를 생성합니다
+		var infowindow = new daum.maps.InfoWindow({
+		position : iwPosition, 
+		content : iwContent 
+		});
+	
+		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+		infowindow.open(map, marker); 
+	}
 }
-
-
 </script>
 
 </head>
@@ -115,5 +113,6 @@ function response(result,textStatus){
 		</td>
 </tr>
 </table>
+<input type='button' value='목록으로' class="button" onclick="history.back()">
 </body>
 </html>
