@@ -33,6 +33,7 @@ function response(result, textStatus) {
 	var str = "<table class='table'>";
 	str += "<thead><tr>";
 	str += "<th>번호</th>";
+	str += "<th>구역</th>";
 	str += "<th>분류</th>";
 	str += "<th>서비스명</th>";
 	str += "<th>접수상태</th>";
@@ -43,6 +44,7 @@ function response(result, textStatus) {
 		$("#div1").append(
 			str += "<tr>",
 			str += "<td>"+ (i+1) + "</td>",
+			str += "<td>" + result.DATA[i].AREANM + "</td>",
 			str += "<td>" + result.DATA[i].MINCLASSNM + "</td>",
 			str += "<td><a href='javascript:read(" + i + ")'>"	+ result.DATA[i].SVCNM + "</a></td>",
 			str += "<td>" + result.DATA[i].SVCSTATNM + "</td>",

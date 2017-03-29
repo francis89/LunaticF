@@ -90,7 +90,7 @@ $(function() {
 	
 function response(result,textStatus){
 	//alert('Call Back Call:'+result);
-	$("#panel").html("<option value='default' >장소</option>");
+	$("#panel").html("");
 	var size = result.DATA.length;
 	//alert('size: ' + size);
 	var i = 0;
