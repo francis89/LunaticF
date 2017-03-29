@@ -42,53 +42,49 @@ function updatePw(){
 	location.href = url;
 }
 </script>
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-} 
-</style> 
-<link href="${pageContext.request.contextPath }/css/style.css" rel="Stylesheet" type="text/css">
+
 </head> 
 <!-- *********************************************** -->
 <body>
 <!-- *********************************************** -->
  
-<DIV class="title">${dto.username } 의 회원 정보</DIV>
- <DIV class="content">
-  <TABLE>
-    <TR>
-      <TH>ID</TH>
-      <TD>${dto.id }</TD>
-    </TR>
-    <TR>
-      <TH>이름</TH>
-      <TD>${dto.username }</TD>
-    </TR>
-    <TR>
-      <TH>전화번호</TH>
-      <TD>${dto.tel }</TD>
-    </TR>
-    <TR>
-      <TH>우편번호</TH>
-      <TD>${dto.zipcode }</TD>
-    </TR>
-    <TR>
-      <TH>주소</TH>
-      <TD>
-      		${dto.address1 }
-      		${dto.address2 }
-      </TD>
-    </TR>
-    <TR>
-      <TH>가입날짜</TH>
-      <TD>${dto.wdate }</TD>
-    </TR>
+<h2 style="text-align: center;">${dto.username } 의 회원 정보</h2>
+ <div class="container">
+ 	<div class="table-responsive">
+		  <table class="table">
+		    <tr>
+		      <th>ID</th>
+		      <td>${dto.id }</td>
+		    </tr>
+		    <tr>
+		      <th>이름</th>
+		      <td>${dto.username }</td>
+		    </tr>
+		    <tr>
+		      <th>연락처</th>
+		      <td>${dto.tel }</td>
+		    </tr>
+		    <tr>
+		      <th>우편번호</th>
+		      <td>${dto.zipcode }</td>
+		    </tr>
+		    <tr>
+		      <th>주소</th>
+		      <td>
+		      		${dto.address1 }
+		      		${dto.address2 }
+		      </td>
+		    </tr>
+		    <tr>
+		      <th>가입날짜</th>
+		      <td>${dto.wdate }</td>
+		    </tr>
+		  
+		  </table>
+ 	</div>
+ </div>
   
-  </TABLE>
- </DIV>
-  
-  <DIV class='bottom'>
+  <DIV class='bottom' style="text-align: center; ">
     <input type='button' value='정보수정' onclick="update()">
     
     <c:choose>

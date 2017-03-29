@@ -6,14 +6,7 @@
 <head> 
 <meta charset="UTF-8"> 
 <title></title> 
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-} 
-</style> 
 <script type="text/javascript">
-
 function incheck(f) {
 	
 	if(f.ntitle.value==""){
@@ -27,59 +20,54 @@ function incheck(f) {
       CKEDITOR.instances['ncontent'].focus();
       return false;
     }
-	
 }
 </script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/ckeditor/ckeditor.js"></script>
- 
 <script type="text/JavaScript">
   window.onload=function(){
    CKEDITOR.replace('ncontent');
   };
 </script>
-<link href="${pageContext.request.contextPath }/css/style.css" rel="Stylesheet" type="text/css">
 </head> 
-<!-- *********************************************** -->
 <body>
-<!-- *********************************************** -->
- 
-<DIV class="title">수정</DIV>
- 
-<FORM name='frm' 
-	  method='POST' 
-	  action='./update' 
-	  onsubmit="return incheck(this)"
-	  enctype="multipart/form-data">
-	<input type='hidden' name='noticeno' size='30' value='${dto.noticeno }'>
-	<input type='hidden' name='col' size='30' value='${param.col }'>
-	<input type='hidden' name='word' size='30' value='${param.word }'>
-	<input type='hidden' name='nowPage' size='30' value='${param.nowPage }'>
-	<input type='hidden' name='id' size='30' value='${dto.id }'>
-	
-  <TABLE class='table'>
-     <TR>
-      <TH>제목</TH>
-      <TD><input type='text' name='ntitle' size='40' value='${dto.ntitle }'></TD>
-    </TR>
-    <TR>
-      <TH>내용</TH>
-      <TD>
-      	<TEXTAREA name='ncontent' id='ncontent' style="font-size:12; color:#000000;border:1px solid; width: 100%" rows="30">
-      		${dto.ncontent}
-      	</TEXTAREA>
-      	</TD>
-    </TR>
-
-  </TABLE>
- 
-  <DIV style='text-align: center; margin-top: 20px; margin-bottom: 20px;'>
-    <input type='submit' value='전송'>
-    <input type='button' value='취소' onclick="history.back();"> 
-  </DIV>  
-</Form>
- 
- 
-<!-- *********************************************** -->
+	 
+	<h2 style="text-align: center;">수정</h2>
+	<div class="container">
+		<form name='frm' 
+			  method='POST' 
+			  action='./update' 
+			  onsubmit="return incheck(this)"
+			  enctype="multipart/form-data">
+			<input type='hidden' name='noticeno' size='30' value='${dto.noticeno }'>
+			<input type='hidden' name='col' size='30' value='${param.col }'>
+			<input type='hidden' name='word' size='30' value='${param.word }'>
+			<input type='hidden' name='nowPage' size='30' value='${param.nowPage }'>
+			<input type='hidden' name='id' size='30' value='${dto.id }'>
+			<div class="table-responsive">
+			  <table class='table'>
+			     <tr>
+				      <th>제목</th>
+				      <td>
+				      	<input type='text' name='ntitle' size='40' value='${dto.ntitle }'>
+				      </td>
+			    </tr>
+			    <tr>
+				      <th>내용</th>
+				      <td>
+				      	<TEXTAREA name='ncontent' id='ncontent' >
+				      		${dto.ncontent}
+				      	</TEXTAREA>
+				      </td>
+			    </tr>
+			
+			  </table>
+			</div>
+		 
+		  <DIV class="bottom" style='text-align: center; '>
+		    <input type='submit' value='전송'>
+		    <input type='button' value='취소' onclick="history.back();"> 
+		  </DIV>  
+		</form>
+	</div>
 </body>
-<!-- *********************************************** -->
 </html> 

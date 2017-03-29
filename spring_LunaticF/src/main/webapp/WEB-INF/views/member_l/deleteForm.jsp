@@ -17,18 +17,17 @@
 <body>
 <!-- *********************************************** -->
  
-<DIV class="title">회원 탈퇴</DIV>
+<h2 style="text-align: center;">회원 탈퇴</h2>
  
 <FORM name='frm' method='POST' action='./delete'>
 <input type="hidden" name="id" value="${id }">
-<input type="hidden" name="oldfile" value="${oldfile }">
 
-	<DIV class="content">
+	<DIV class="container">
 		탈퇴를 하시면 더이상 CONTENT를 제공받을수 없습니다<br>
 		그래도 탈퇴를 원하시면 아래 탈퇴버튼을 클릭하세요
 	</DIV>
 
-  <DIV class='bottom'>
+  <DIV class='bottom' style="text-align: center;">
     <input type='submit' value='탈퇴'>
     <input type='button' value='취소' onclick="history.back()">
   </DIV>

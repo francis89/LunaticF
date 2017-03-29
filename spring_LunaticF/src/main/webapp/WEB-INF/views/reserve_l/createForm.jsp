@@ -115,84 +115,89 @@ function response(result,textStatus){
     });
   });
 </script>
-<link href="${pageContext.request.contextPath}/css/style.css" rel="Stylesheet" type="text/css">
 </head>
 <body>
-<DIV class="title">등록</DIV>
- 
-<FORM name='frm' 
-	  method='POST' 
-	  action='./create' 
-	  onsubmit="return incheck(this)"
-	  enctype="multipart/form-data">
-	  <input type="hidden" name="id" value="${sessionScope.id}">
-  <TABLE>
-    <TR>
-      <TH>제목</TH>
-      <TD><input type="text" name="retitle" size="40"></TD>
-    </TR>
-    <TR>
-      <TH>내용</TH>
-      <TD>
-		<textarea rows="10" cols="40" name="recontent"></textarea>
-      </TD>
-      <tr>
-      <TH>예약날짜</TH>
-      <TD>
-      	<input type="date" name="reterm" id="rdate">
-      </TD>
-    </TR>
-    <TR>
-      <TH>장소</TH>
-      <TD>
-      		<p>
-				<label for="serviceStatus3">지역 :</label>
-		    	<select class="selectSt" onchange="searchArea(this.value);" id="serviceStatus3" name="areaStatus" style="width:20%;height:100%" title='지역 선택' >
-					<option value="defaule" >지역</option>
-                    <option value="DongJak" >동작구</option>
-                    <option value="DoBong(default)" >도봉구</option>
-                    <option value="GangBuk(default)" >강북구</option>
-                    <option value="NoWon(default)" >노원구</option>
-                    <option value="EunPyeong(default)" >은평구</option>
-                    <option value="JongNo(default)" >종로구</option>
-                    <option value="SungBuk(default)" >성북구</option>
-                    <option value="JungNang(default)" >중랑구</option>
-                    <option value="DongDaeMun(default)" >동대문구</option>
-                    <option value="SeoDaeMun(default)" >서대문구</option>
-                    <option value="JungGu(default)" >중구</option>
-                    <option value="SungDong" >성동구</option>
-                    <option value="GwangJin" >광진구</option>
-                    <option value="GangDong" >강동구</option>
-                    <option value="GangSeo"  >강서구</option>
-                    <option value="Mapo" >마포구</option>
-                    <option value="YeongDeungPo" >영등포구</option>
-                    <option value="YongSan" >용산구</option>
-                    <option value="GangNam(default)" >강남구</option>
-                    <option value="SongPa" >송파구</option>
-                    <option value="SeoCho" >서초구</option>
-                    <option value="GwanAk(default)" >관악구</option>
-                    <option value="GeumCheon(default)" >금천구</option>
-                    <option value="Guro" >구로구</option>
-                    <option value="YangCheon" >양천구</option>
-				</select>
-  				<br>
-  				<label for="panel">장소명:</label>
-  				<select id="panel" name="restate"  style="width:60%;height:100%" title='장소 선택'>
-  					<option value="default" >장소</option>
-  				</select>
-			</p>
-      </TD>
-    </TR>
-    <TR>
-      <TH>인원</TH>
-      <TD><DIV class="controlgroup">
-      <input id="horizontal-spinner" class="ui-spinner-input" name="retimnum"></DIV></TD>
-    </TR>
-  </TABLE>
-  <DIV class='bottom'>
-    <input type='submit' value='등록' class="button" >
-    <input type='button' value='취소' class="button" onclick="history.back()">
-  </DIV>
-</FORM>
+	<h2 style="text-align: center;">등록</h2>
+	 <div class="container">
+		<FORM name='frm' 
+			  method='POST' 
+			  action='./create' 
+			  onsubmit="return incheck(this)"
+			  enctype="multipart/form-data">
+			  <input type="hidden" name="id" value="${sessionScope.id}">
+			  <div class="table-responsive">
+				  <table class="table">
+				    <tr>
+				      <th>제목</th>
+				      <td><input type="text" name="retitle" size="40"></td>
+				    </tr>
+				    <tr>
+				      <th>내용</th>
+				      <td>
+						<textarea rows="10" cols="40" name="recontent"></textarea>
+				      </td>
+				    <tr>
+				      <th>예약날짜</th>
+				      <td>
+				      	<input type="date" name="reterm" id="rdate">
+				      </td>
+				    </tr>
+				    <tr>
+				      <th>장소</th>
+				      <td>
+				      		<p>
+								<label for="serviceStatus3">지역 :</label>
+						    	<select class="selectSt" onchange="searchArea(this.value);" id="serviceStatus3" name="areaStatus" style="width:20%;height:100%" title='지역 선택' >
+									<option value="defaule" >지역</option>
+				                    <option value="DongJak" >동작구</option>
+				                    <option value="DoBong(default)" >도봉구</option>
+				                    <option value="GangBuk(default)" >강북구</option>
+				                    <option value="NoWon(default)" >노원구</option>
+				                    <option value="EunPyeong(default)" >은평구</option>
+				                    <option value="JongNo(default)" >종로구</option>
+				                    <option value="SungBuk(default)" >성북구</option>
+				                    <option value="JungNang(default)" >중랑구</option>
+				                    <option value="DongDaeMun(default)" >동대문구</option>
+				                    <option value="SeoDaeMun(default)" >서대문구</option>
+				                    <option value="JungGu(default)" >중구</option>
+				                    <option value="SungDong" >성동구</option>
+				                    <option value="GwangJin" >광진구</option>
+				                    <option value="GangDong" >강동구</option>
+				                    <option value="GangSeo"  >강서구</option>
+				                    <option value="Mapo" >마포구</option>
+				                    <option value="YeongDeungPo" >영등포구</option>
+				                    <option value="YongSan" >용산구</option>
+				                    <option value="GangNam(default)" >강남구</option>
+				                    <option value="SongPa" >송파구</option>
+				                    <option value="SeoCho" >서초구</option>
+				                    <option value="GwanAk(default)" >관악구</option>
+				                    <option value="GeumCheon(default)" >금천구</option>
+				                    <option value="Guro" >구로구</option>
+				                    <option value="YangCheon" >양천구</option>
+								</select>
+				  				<br>
+				  				<label for="panel">장소명:</label>
+				  				<select id="panel" name="restate"  style="width:60%;height:100%" title='장소 선택'>
+				  					<option value="default" >장소</option>
+				  				</select>
+							</p>
+				      </td>
+				    </tr>
+				    <tr>
+				      <th>인원</th>
+				      <td>
+				      	<DIV class="controlgroup">
+				      		<input id="horizontal-spinner" class="ui-spinner-input" name="retimnum">
+				      	</DIV>
+				      </td>
+				    </tr>
+				  </table>
+			  </div>
+			  <DIV class='bottom' style="text-align: center;">
+			    <input type='submit' value='등록' class="button" >
+			    <input type='button' value='취소' class="button" onclick="history.back()">
+			  </DIV>
+		</FORM>
+	 </div>
 </body>
 </html>

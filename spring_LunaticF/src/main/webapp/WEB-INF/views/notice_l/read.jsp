@@ -8,12 +8,6 @@
 <meta charset="UTF-8">
 <title></title>
 <style type="text/css">
-* {
-	font-family: gulim;
-	font-size: 20px;
-}
-</style>
-<style type="text/css">
 .rcreate {
 	font-size: 20px;
 	font-weight: bold;
@@ -148,81 +142,80 @@ hr {
 		}
 	}
 </script>
-<link href="${pageContext.request.contextPath }/css/style.css"
-	rel="Stylesheet" type="text/css">
 </head>
-<!-- *********************************************** -->
 <body>
-	<!-- *********************************************** -->
 
-	<DIV class="title">조회</DIV>
-
-	<TABLE style="width: 60%; padding: 20px;">
-		<TR>
-			<TH>제목</TH>
-			<TD>${dto.ntitle }</TD>
-		</TR>
-		<TR>
-			<TD colspan="2" class='td'>${dto.ncontent }</TD>
-		</TR>
-		<TR>
-			<TH>I D</TH>
-			<TD>${dto.id }</TD>
-		</TR>
-
-		<TR>
-			<TH>조회수</TH>
-			<TD>${dto.nviewcnt }</TD>
-		</TR>
-		<TR>
-			<TH>등록일</TH>
-			<TD>${fn:substring(dto.ndate, 0, 10) }</TD>
-		</TR>
-
-	</TABLE>
-
-	<div class="bottom">
-	<c:if test="${not empty sessionScope.id && sessionScope.grade=='A' }">
-		<input type="button" value="목록" onclick="blist()"> 
-		<input type="button" value="수정" onclick="bupdate()"> 
-		<input type="button" value="삭제" onclick="bdelete()"> 
-	</c:if>
-		<input type="button" value="등록" onclick="bcreate()"> 
-	</div>
-
-	<hr>
-	<c:forEach var="rdto" items="${rlist}">
-		<div class="rlist">
-			${rdto.id}<br />
-			<p>${rdto.nrcontent}</p>
-			${rdto.nrdate}
-			<c:if test="${sessionScope.id==rdto.id }">
-				<span style="float: right;"> <a
-					href="javascript:rupdate('${rdto.nreplyno}','${rdto.nrcontent }')">
-						수정</a>|<a href="javascript:rdelete('${rdto.nreplyno}')">삭제</a>
-				</span>
-			</c:if>
+	<h2 style="text-align: center;">조회</h2>
+	
+	<div class="container">
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<th>제목</th>
+					<td>${dto.ntitle }</td>
+				</tr>
+				<tr>
+					<td colspan="2">${dto.ncontent }</td>
+				</tr>
+				<tr>
+					<th>I D</th>
+					<td>${dto.id }</td>
+				</tr>
+		
+				<tr>
+					<th>조회수</th>
+					<td>${dto.nviewcnt }</td>
+				</tr>
+				<tr>
+					<th>등록일</th>
+					<td>${fn:substring(dto.ndate, 0, 10) }</td>
+				</tr>
+			</table>
 		</div>
-	</c:forEach>
-	<div class="rcreate">
-		<form name="rform" action="./rcreate" method="post"
-			onsubmit="return input(this)">
-			<textarea rows="3" cols="28" name="nrcontent" onclick="rcheck(this)"></textarea>
-			<br>
-			<input type="submit" name="rsubmit" value="등록"> 
-			<input type="hidden" name="noticeno" value="${dto.noticeno}"> 
-			<input type="hidden" name="id" value="${sessionScope.id}"> 
-			<input type="hidden" name="nowPage" value="${param.nowPage}"> 
-			<input type="hidden" name="nPage" value="${nPage}"> 
-			<input type="hidden" name="col" value="${param.col}"> 
-			<input type="hidden" name="word" value="${param.word}"> 
-			<input type="hidden" name="nreplyno" value="0">
-
-
-		</form>
-	</div>
-	<div class="bottom">${paging}</div>
-	<!-- *********************************************** -->
+	
+		<div class="bottom" style="text-align: center;">
+			<c:if test="${not empty sessionScope.id && sessionScope.grade=='A' }">
+				<input type="button" value="목록" onclick="blist()"> 
+				<input type="button" value="수정" onclick="bupdate()"> 
+				<input type="button" value="삭제" onclick="bdelete()"> 
+			</c:if>
+				<input type="button" value="등록" onclick="bcreate()"> 
+		</div>
+	
+		<hr>
+		<c:forEach var="rdto" items="${rlist}">
+			<div class="rlist">
+				${rdto.id}<br />
+				<p>${rdto.nrcontent}</p>
+				${rdto.nrdate}
+				<c:if test="${sessionScope.id==rdto.id }">
+					<span style="float: right;"> 
+						<a href="javascript:rupdate('${rdto.nreplyno}','${rdto.nrcontent }')">수정
+						</a>|<a href="javascript:rdelete('${rdto.nreplyno}')">삭제</a>
+					</span>
+				</c:if>
+			</div>
+		</c:forEach>
+		<div class="rcreate">
+			<form 
+				name="rform" 
+				action="./rcreate" 
+				method="post"
+				onsubmit="return input(this)">
+					<textarea rows="3" cols="28" name="nrcontent" onclick="rcheck(this)"></textarea>
+					<br>
+					<input type="submit" name="rsubmit" value="등록"> 
+					<input type="hidden" name="noticeno" value="${dto.noticeno}"> 
+					<input type="hidden" name="id" value="${sessionScope.id}"> 
+					<input type="hidden" name="nowPage" value="${param.nowPage}"> 
+					<input type="hidden" name="nPage" value="${nPage}"> 
+					<input type="hidden" name="col" value="${param.col}"> 
+					<input type="hidden" name="word" value="${param.word}"> 
+					<input type="hidden" name="nreplyno" value="0">
+			</form>
+		</div>
+		<div class="bottom">${paging}</div>
+ 	</div>
+	<!--container div end -->
 </body>
-<!-- *********************************************** -->
 </html>

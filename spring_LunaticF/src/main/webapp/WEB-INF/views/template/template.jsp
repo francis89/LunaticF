@@ -8,7 +8,7 @@
 <title>
 <tiles:getAsString name="title"/>
 </title>
-<link href="../css/style.css" rel="Stylesheet" type="text/css"> 
+<!-- <link href="../css/style.css" rel="Stylesheet" type="text/css">  -->
 </head>
 <body leftmargin="0" topmargin="0">
  

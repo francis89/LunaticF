@@ -5,17 +5,6 @@
 <head> 
 <meta charset="UTF-8"> 
 <title>나눔게시판 글 생성</title> 
-
-<style type="text/css"> 
-input,textarea
-{
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 20px;
-}
-</style>
-
 <script type="text/javascript">
 
 function incheck(f) {
@@ -46,60 +35,51 @@ function incheck(f) {
      CKEDITOR.replace('shcontent');  // <TEXTAREA>태그 id 값
   };
 </script> 
- 
-<link href="${pageContext.request.contextPath}/css/style.css" rel="Stylesheet" type="text/css">
-
 </head> 
-
 <body>
- 
-<DIV class="title">게시글 등록</DIV>
- 
-<FORM name='frm' 
-			method='POST' 
-			action='./create' 
-			onsubmit="return incheck(this)"
-			enctype="multipart/form-data">
-  
-  <TABLE>
-    
-    <TR>
-      <TH>작성자</TH>
-      <TD class="createtd" colspan="8">
-    <input value="${sessionScope.id}" name="id">
-      </TD>
-    </TR>
-    
-    <TR>
-      <TH>제목</TH>
-      <TD class="createtd" colspan="8">
-    <input type="text" name="shtitle" size="40">
-    	</TD>
-    </TR>
-
-		<tr>  
-			<th>제품 종류 / 사이즈</th>
-    	<td class="createtd">
-				<input type="text" name="shcategory" size="20" placeholder="제품 종류 / 사이즈">
-		 </td>
-    </tr>
-    
-    <TR>
-      <TH>내용</TH>
-      <TD class="createtd" colspan="8">
-		<textarea rows='20' cols='1000' name="shcontent"></textarea>
-      </TD>
-    </TR>
-    
-  </TABLE>
-  
-  <br>
-  
-  <DIV class="bottom">
-    <input type='submit' value='등록' class="button" >
-    <input type='button' value='취소' class="button" onclick="history.back()">
-  </DIV>
-
-</FORM>
+	<h2 style="text-align: center;">글 등록</h2>
+	<div class="container">
+		<form name='frm' 
+					method='POST' 
+					action='./create' 
+					onsubmit="return incheck(this)"
+					enctype="multipart/form-data">
+		  <div class="table-responsive">
+			  <table class="table">
+			    <tr>
+			      <th>작성자</th>
+			      <td colspan="8">
+			    	<input value="${sessionScope.id}" name="id">
+			      </td>
+			    </tr>
+			    
+			    <tr>
+			      <th>제목</th>
+			      <td colspan="8">
+			    	<input type="text" name="shtitle" size="40">
+			      </td>
+			    </tr>
+				<tr>  
+					<th>제품 종류 / 사이즈</th>
+			    	<td>
+						<input type="text" name="shcategory" size="20" placeholder="제품 종류 /사이즈">
+					 </td>
+			    </tr>
+			    <tr>
+				    <th>내용</th>
+				    <td colspan="8">
+						<textarea rows='20' cols='1000' name="shcontent"></textarea>
+				    </td>
+			    </tr>
+			  </table>
+		  </div>
+		  
+		  <DIV class="bottom" style="text-align: center;">
+		    <input type='submit' value='등록' class="button" >
+		    <input type='button' value='취소' class="button" onclick="history.back()">
+		  </DIV>
+		
+		</form>
+	</div>
 </body>
 </html> 

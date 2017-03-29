@@ -24,15 +24,14 @@ function read(id){
   font-size: 20px; 
 } 
 </style> 
-<link href="${pageContext.request.contextPath }/css/style.css" rel="Stylesheet" type="text/css">
 </head> 
 <!-- *********************************************** -->
 <body>
 <!-- *********************************************** -->
  
-<DIV class="title">회원 목록</DIV>
- <DIV class="search">
-<FORM name='frm' method='POST' action='./list'>
+<h2 style="text-align: center;">회원 목록</h2>
+ <div class="search">
+<form name='frm' method='POST' action='./list'>
 <SELECT name="col">
 	<option value="username" 
 		<c:if test="${col=='username'}"> selected='selected' </c:if>>Name</option>
@@ -44,42 +43,43 @@ function read(id){
 </SELECT>
 <input type="text" name="word" value='${word }'>
 <input type="submit" value="검색">
-</FORM>
- </DIV>
- 
-<c:forEach items="${list}" var="dto">
-  <TABLE style="width:80%;">
-
-    <TR>
-      <TH width="20%">I D</TH>
-      <TD width="50%">
-      <a href="javascript:read('${dto.id }')">
-		${dto.id }
-      </a>
-      </TD>
-    </TR>
-    <TR>
-      <TH>Name</TH>
-      <TD>${dto.username }</TD>
-    </TR>
-    <TR>
-      <TH>전화번호</TH>
-      <TD>${dto.tel }</TD>
-    </TR>
-    <TR>
-      <TH>주소</TH>
-      <TD>
-      ${dto.address1 }
-      ${dto.address2 }
-      </TD>
-    </TR>
-  </TABLE>
-</c:forEach>
-  <DIV class='bottom'>
+</form>
+ </div>
+ <div class="container">
+	<div class="table-responsive">
+		<c:forEach items="${list}" var="dto">
+		  <table class="table">
+		    <tr>
+		      <th>I D</th>
+		      <TD style="text-align: left;">
+		      <a href="javascript:read('${dto.id }')">
+				${dto.id }
+		      </a>
+		      </TD>
+		    </tr>
+		    <tr>
+		      <th>Name</th>
+		      <TD style="text-align: left;">${dto.username }</TD>
+		    </tr>
+		    <tr>
+		      <th>전화번호</th>
+		      <TD style="text-align: left;">${dto.tel }</TD>
+		    </tr>
+		    <tr>
+		      <th>주소</th>
+		      <TD style="text-align: left;">
+		      ${dto.address1 }
+		      ${dto.address2 }
+		      </TD>
+		    </tr>
+		  </table>
+		</c:forEach>
+	</div>
+  <div class='bottom'>
   ${paging }
-  </DIV>
+  </div>
  
- 
+  </div>
 <!-- *********************************************** -->
 </body>
 <!-- *********************************************** -->

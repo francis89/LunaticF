@@ -50,70 +50,66 @@
     }
 </script> 
 
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-} 
-</style> 
-<link href="${pageContext.request.contextPath}/css/style.css" rel="Stylesheet" type="text/css">
 </head> 
 <!-- *********************************************** -->
 <body>
 <!-- *********************************************** -->
  
-<DIV class="title">회원 수정</DIV>
- 
-<FORM name='frm' 
-	  method='POST' 
-	  action='./update' 
-	  >
-	  <input type="hidden" name="id" value="${id }">
-	  <input type="hidden" name="col" value="${param.col }">
-	  <input type="hidden" name="word" value="${param.word }">
-	  <input type="hidden" name="nowPage" value="${param.nowPage }">
-  <TABLE style="width:50%">
-	<TR>
-      <TH>I D</TH>
-      <TD>${dto.id }</TD>
-      <TD> ID </TD>
-    </TR>    
-	<TR>
-      <TH>아이디</TH>
-      <TD>${dto.username}</TD>
-      <TD> 실명 </TD>
-    </TR>    
-	<TR>
-      <TH>전화번호</TH>
-      <TD><input type="text" name="tel" size="15" value="${dto.tel }"></TD>
-      <TD>수정 번호</TD>
-    </TR>    
-    
-    <TR>
-      <TH>우편번호</TH>
-      <TD>
-      <input type="text" name="zipcode" size="7" maxlength="6" value="${dto.zipcode }" id="sample6_postcode" placeholder="우편번호">
-	  <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 검색">
-      </TD>
-      <TD>수정 우편번호</TD>
-    </TR>
-
-    <TR>
-      <TH>주소</TH>
-      <TD>
-      <input type="text" name="address1" size="40" value="${dto.address1 }" id="sample6_address" placeholder="주소"> 
-      <input type="text" name="address2" size="40" value="${dto.address2 }" id="sample6_address2" placeholder="상세주소">
-      </TD>
-      <TD>수정 주소</TD>
-    </TR>
- 
-  </TABLE>
-  
-  <DIV class='bottom'>
-    <input type='submit' value='회원수정'>
-    <input type='button' value='취소' onclick="history.back()">
-  </DIV>
-</FORM>
+<h2 style="text-align: center; ">회원 수정</h2>
+ <div class="container">
+	<form name='frm' 
+		  method='POST' 
+		  action='./update' 
+		  >
+		  <input type="hidden" name="id" value="${id }">
+		  <input type="hidden" name="col" value="${param.col }">
+		  <input type="hidden" name="word" value="${param.word }">
+		  <input type="hidden" name="nowPage" value="${param.nowPage }">
+		  <div class="table-responsive">
+			  <table class="table">
+				<tr>
+			      <th>I D</th>
+			      <td>${dto.id }</td>
+			      <td> ID </td>
+			    </tr>    
+				<tr>
+			      <th>아이디</th>
+			      <td>${dto.username}</td>
+			      <td> 실명 </td>
+			    </tr>    
+				<tr>
+			      <th>전화번호</th>
+			      <td><input type="text" name="tel" size="15" value="${dto.tel }"></td>
+			      <td>수정 번호</td>
+			    </tr>    
+			    
+			    <tr>
+			      <th>우편번호</th>
+			      <td>
+			      <input type="text" name="zipcode" size="7" maxlength="6" value="${dto.zipcode }" id="sample6_postcode" placeholder="우편번호">
+				  <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 검색">
+			      </td>
+			      <td>수정 우편번호</td>
+			    </tr>
+			
+			    <tr>
+			      <th>주소</th>
+			      <td>
+			      <input type="text" name="address1" size="40" value="${dto.address1 }" id="sample6_address" placeholder="주소"> 
+			      <input type="text" name="address2" size="40" value="${dto.address2 }" id="sample6_address2" placeholder="상세주소">
+			      </td>
+			      <td>수정 주소</td>
+			    </tr>
+			 
+			  </table>
+		  </div>
+		  
+		  <DIV class='bottom' style="text-align: center; ">
+		    <input type='submit' value='회원수정'>
+		    <input type='button' value='취소' onclick="history.back()">
+		  </DIV>
+	</form>
+ </div>
  
  
 <!-- *********************************************** -->

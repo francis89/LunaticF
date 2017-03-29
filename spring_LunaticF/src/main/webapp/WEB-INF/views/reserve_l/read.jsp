@@ -6,12 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-}
-</style> 
 <script type="text/javascript">
 	function rcreate(){
 		var url = "create";
@@ -52,63 +46,65 @@
 		location.href=url;
 	}
 </script>
-<link href="${pageContext.request.contextPath}/css/style.css" rel="Stylesheet" type="text/css">
 </head>
 <body>
  
-<DIV class="title">조회</DIV>
- 
-  <TABLE style=" width: 60%; padding: 20px;">
-  <TR>
-    <TH>예약번호</TH>
-    <TD>${dto.reserveno}</TD>
-  </TR>
-  <TR>
-    <TH>제목</TH>
-    <TD>${dto.retitle}</TD>
-  </TR> 
-  <TR>
-    <TD colspan="2" class='td'>${dto.recontent}</TD>
-  </TR> 
-  <TR>
-    <TH>예약날짜</TH>
-    <TD>${dto.reterm}</TD>
-  </TR>
-  <TR>
-    <TH>장소</TH>
-    <TD>${dto.restate}</TD>
-  </TR>  
-  <TR>
-    <TH>인원</TH>
-    <TD>${dto.retimnum}</TD>
-  </TR>
-  <TR>
-    <TH>등록날짜</TH>
-    <TD>${dto.redate}</TD>
-  </TR>
-  <TR>
-    <TH>조회수</TH>
-    <TD>${dto.reviewcnt}</TD>
-  </TR>
-  <TR>
-    <TH>아이디</TH>
-    <TD>${dto.id}</TD>
-  </TR>
-</TABLE>
-  
-  <div class="bottom">
-  <c:if test="${not empty sessionScope.id}">
-<input type="button" value="등록" onclick="rcreate()">
-</c:if>
-<input type="button" value="목록" onclick="rlist()">
-<c:if test="${not empty sessionScope.id && sessionScope.id == dto.id}">
-<input type="button" value="수정" onclick="rupdate()">
-<input type="button" value="삭제" onclick="rdelete()">
-</c:if>
-<c:if	test="${not empty sessionScope.id && sessionScope.grade=='A' }">
-<input type="button" value="답변" onclick="rreply()">
-<input type="button" value="삭제" onclick="rdelete()">
-</c:if>
-</div>
+	<h2 style="text-align: center;">예약 내역 조회</h2>
+	<div class="container">
+		<div class="table-responsive">
+			 <table class="table" style=" width: 80%;" >
+				  <tr>
+				    <th>예약번호</th>
+				    <td>${dto.reserveno}</td>
+				  </tr>
+				  <tr>
+				    <th>제목</th>
+				    <td>${dto.retitle}</td>
+				  </tr> 
+				  <tr>
+				    <td colspan="2">${dto.recontent}</td>
+				  </tr> 
+				  <tr>
+				    <th>예약날짜</th>
+				    <td>${dto.reterm}</td>
+				  </tr>
+				  <tr>
+				    <th>장소</th>
+				    <td>${dto.restate}</td>
+				  </tr>  
+				  <tr>
+				    <th>인원</th>
+				    <td>${dto.retimnum}</td>
+				  </tr>
+				  <tr>
+				    <th>등록날짜</th>
+				    <td>${dto.redate}</td>
+				  </tr>
+				  <tr>
+				    <th>조회수</th>
+				    <td>${dto.reviewcnt}</td>
+				  </tr>
+				  <tr>
+				    <th>아이디</th>
+				    <td>${dto.id}</td>
+				  </tr>
+			</table>
+		</div>
+	  
+		<DIV class="bottom" style="text-align: center;">
+			<c:if test="${not empty sessionScope.id}">
+				<input type="button" value="등록" onclick="rcreate()">
+			</c:if>
+				<input type="button" value="목록" onclick="rlist()">
+			<c:if test="${not empty sessionScope.id && sessionScope.id == dto.id}">
+				<input type="button" value="수정" onclick="rupdate()">
+				<input type="button" value="삭제" onclick="rdelete()">
+			</c:if>
+			<c:if	test="${not empty sessionScope.id && sessionScope.grade=='A' }">
+				<input type="button" value="답변" onclick="rreply()">
+				<input type="button" value="삭제" onclick="rdelete()">
+			</c:if>
+		</DIV>
+	</div>
 </body>
 </html> 

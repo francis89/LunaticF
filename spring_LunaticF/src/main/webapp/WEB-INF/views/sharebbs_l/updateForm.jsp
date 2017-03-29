@@ -4,16 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>REPLY UPDATEFORM</title>
-
-<style type="text/css">
-input, textarea {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 20px;
-}
-</style>
+<title>UPDATEFORM</title>
 
 <script type="text/javascript">
 	function incheck(f) {
@@ -44,64 +35,63 @@ input, textarea {
   };
 </script> 
 
-<link href="${pageContext.request.contextPath}/css/style.css"
-	rel="Stylesheet" type="text/css">
 </head>
 
 <body>
 
-	<DIV class="title">게시글 수정</DIV>
-
-	<FORM name='frm' 
-				method='POST' 
-				action='./update'
-				onsubmit="return incheck(this)" 
-				enctype="multipart/form-data">
-
-		<input type='hidden' name='shareno' size='30' value='${dto.shareno}'>
-		<input type='hidden' name='col' size='30' value='${param.col}'>
-		<input type='hidden' name='word' size='30' value='${param.word}'>
-		<input type='hidden' name='nowPage' size='30' value='${param.nowPage}'>
-		
-<TABLE>
+	<h2 style="text-align: center;">게시글 수정</h2>
+	<div class="container">
+		<form name='frm' 
+					method='POST' 
+					action='./update'
+					onsubmit="return incheck(this)" 
+					enctype="multipart/form-data">
+	
+			<input type='hidden' name='shareno' size='30' value='${dto.shareno}'>
+			<input type='hidden' name='col' size='30' value='${param.col}'>
+			<input type='hidden' name='word' size='30' value='${param.word}'>
+			<input type='hidden' name='nowPage' size='30' value='${param.nowPage}'>
 			
-		<TR>
-			<TH>작성자</TH>
-			<TD class="createtd">
-	<input type='text' name='id' size='40' value='${dto.id}'>
-			</TD>
-		</TR>
-		
-		<TR>
-			<TH>제목</TH>
-			<TD class="createtd">
-	<input type='text' name='shtitle' size='40' value='${dto.shtitle}'>
-			</TD>
-		</TR>
-		
-		<tr>
-			<th>제품 종류 / 사이즈</th>
-			<td class="createtd">
-	<input type="text" name="shcategory" size="20" 
-			placeholder="제품 종류 / 사이즈">
-			</td>
-		</tr>
+			<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<th>작성자</th>
+						<td>
+							<input type='text' name='id' size='40' value='${dto.id}'>
+						</td>
+					</tr>
+					
+					<tr>
+						<th>제목</th>
+						<td>
+							<input type='text' name='shtitle' size='40' value='${dto.shtitle}'>
+						</td>
+					</tr>
+					
+					<tr>
+						<th>제품 종류 / 사이즈</th>
+						<td>
+							<input type="text" name="shcategory" size="20" placeholder="제품 종류 / 사이즈">
+						</td>
+					</tr>
+			
+					<tr>
+						<th>내용</th>
+						<td>
+							<TEXTAREA name='shcontent' rows='10' cols='100'>${dto.shcontent}</TEXTAREA>
+						</td>
+					</tr>
+					
+				</table>
+			</div>
+			
+			<br>
+			<DIV class="bottom" style="text-align: center;">
+				<input type='submit' value='전송'> 
+				<input type='button' value='취소' onclick="history.back();">
+			</DIV>
+		</form>
 
-		<TR>
-			<TH>내용</TH>
-			<TD class="createtd">
-	<TEXTAREA name='shcontent' rows='10' cols='100'>${dto.shcontent}</TEXTAREA>
-			</TD>
-		</TR>
-		
-</TABLE>
-		
-		<br>
-		<DIV class="bottom">
-			<input class="button" type='submit' value='전송'> <input
-				class="button" type='button' value='취소' onclick="history.back();">
-		</DIV>
-	</Form>
-
+	</div>
 </body>
 </html>

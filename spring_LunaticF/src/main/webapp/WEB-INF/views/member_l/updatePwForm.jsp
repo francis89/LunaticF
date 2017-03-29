@@ -27,43 +27,40 @@ function inCheck(f){
 
 
 </script>
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-} 
-</style> 
-<link href="${pageContext.request.contextPath }/css/style.css" rel="Stylesheet" type="text/css">
+
 </head> 
 <!-- *********************************************** -->
 <body>
 <!-- *********************************************** -->
  
-<DIV class="title">패스워드 변경</DIV>
- 
-<FORM name='frm' 
-	  method='POST' 
-	  action='./updatePw'
-	  onsubmit="return inCheck(this)">
-<input type="hidden" name="id" value="${param.id }">
-  <TABLE>
-    <TR>
-      <TH>패스워드</TH>
-      <TD><input type="password" name="passwd"></TD>
-    </TR>
-    <TR>
-      <TH>패스워드 확인</TH>
-      <TD><input type="password" name="repasswd"></TD>
-    </TR>
-  </TABLE>
+<h2 style="text-align: center;">패스워드 변경</h2>
+<div class="container">
 
-  <DIV class='bottom'>
-    <input type='submit' value='패스워드 수정'>
-    <input type='button' value='취소' onclick="history.back()">
-  </DIV>
+	<form name='frm' 
+		  method='POST' 
+		  action='./updatePw'
+		  onsubmit="return inCheck(this)">
+	<input type="hidden" name="id" value="${param.id }">
+		<div class="table-responsive">
+		  <table class="table">
+		    <tr>
+		      <th>패스워드</th>
+		      <td><input type="password" name="passwd"></td>
+		    </tr>
+		    <tr>
+		      <th>패스워드 확인</th>
+		      <td><input type="password" name="repasswd"></td>
+		    </tr>
+		  </table>
+		</div>	
+		
+		<DIV class='bottom' style="text-align: center;">
+		    <input type='submit' value='패스워드 수정'>
+		    <input type='button' value='취소' onclick="history.back()">
+		</DIV>
  
-</FORM>
- 
+</form>
+</div>
  
 <!-- *********************************************** -->
 </body>
