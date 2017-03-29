@@ -5,12 +5,7 @@
 <head> 
 <meta charset="UTF-8"> 
 <title></title> 
-<style type="text/css"> 
-*{ 
-  font-family: gulim; 
-  font-size: 20px; 
-} 
-</style> 
+
 <script type="text/javascript">
 function use(){
 	opener.frm.id.value='${id}';

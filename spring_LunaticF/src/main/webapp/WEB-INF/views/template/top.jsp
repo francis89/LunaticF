@@ -12,11 +12,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-.img {
-	width: 100%;
-	height: 55%;
-}
-
 body {
 	background-color: skyblue;
 }

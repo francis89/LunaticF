@@ -231,7 +231,7 @@ public class Member_lController {
 	@RequestMapping(value = "/member_l/create", method = RequestMethod.POST)
 	public String create(Member_lDTO dto, HttpServletRequest request, String id) {
 		String str = "";
-		String viewPage = "member/prcreateProc";
+		String viewPage = "/member_l/prcreateProc";
 
 		if (mdao.idCheck(id)) {
 			str = "중복된 ID";
