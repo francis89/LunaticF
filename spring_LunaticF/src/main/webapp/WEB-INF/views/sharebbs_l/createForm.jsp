@@ -44,12 +44,13 @@ function incheck(f) {
 					action='./create' 
 					onsubmit="return incheck(this)"
 					enctype="multipart/form-data">
+					<input type="hidden" value="${sessionScope.id}" name="id" >
 		  <div class="table-responsive">
 			  <table class="table">
 			    <tr>
 			      <th>작성자</th>
 			      <td colspan="8">
-			    	<input value="${sessionScope.id}" name="id">
+			    	<input type="text" value="${sessionScope.id}" name="id" disabled="disabled">
 			      </td>
 			    </tr>
 			    
