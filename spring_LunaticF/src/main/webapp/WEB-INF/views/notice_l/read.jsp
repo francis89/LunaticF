@@ -16,7 +16,7 @@
 	border-width: 1px; /* 선 두께 */
 	border-color: #AAAAAA; /* 선 색깔 */
 	color: #000000; /* 글자 색깔 */
-	width: 35%; /* 화면의 30% */
+	width: 40%; /* 화면의 30% */
 	padding: 10px; /* 위 오른쪽 아래 왼쪽: 시간 방향 적용 */
 	/* padding: 50px 10px;  50px: 위 아래, 10px: 좌우 */
 	/* padding-top: 30px;  상단만 간격을 30px 지정   */
@@ -196,7 +196,7 @@ hr {
 				</c:if>
 			</div>
 		</c:forEach>
-		<div class="rcreate">
+		<div class="rcreate" style="text-align: center;">
 			<form 
 				name="rform" 
 				action="./rcreate" 

@@ -42,10 +42,6 @@ function response(result,textStatus){
                 	"<th>소분류명</th>"+
                 	"<td>"+result.DATA[i].MINCLASSNM+"</td>"+
                 "</tr>"+
-                "<tr>"+
-                	"<th>접수종료일시</th>"+
-               		"<td>"+result.DATA[i].RCPTENDDT+"</td>"+
-                "</tr>"+
                	"<tr>"+
 	                "<th>대상</th>"+
 	                "<td>"+result.DATA[i].USETGTINFO+"</td>"+
